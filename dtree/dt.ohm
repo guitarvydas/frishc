@@ -1,0 +1,28 @@
+dt {
+  Main = YesNo
+  YesNo =
+    | "[" metaSymbol Arg? YesBranch NoBranch "]" -- meta
+    | "[" symbol     YesBranch NoBranch "]" -- expr
+
+  YesBranch = "|" "yes" ":" (YesNo | Process)
+  NoBranch = "|" "no" ":" (YesNo | Process)
+
+  Process = 
+    | "@"? processName Actual -- withactual
+    | "@"? processName -- withoutactual
+  Actual = "(" actual ")"
+
+  Arg =  "(" actual ")"
+  metaSymbol =
+    | "%" name -- percent
+    | name "?" -- question
+  symbol = name
+  actual = name
+  processName = name
+  name = nameNoWs nameWithWs*
+  nameWithWs = spaces nameNoWs
+  nameNoWs = letter nametail*
+  nametail =
+    | alnum -- alnum
+    | (~space ~"[" ~"]" ~"|" ~"yes" ~"no" ~"@" ~"(" ~")" ~"%" ~"?" any) -- other
+}
