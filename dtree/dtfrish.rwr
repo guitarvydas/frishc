@@ -20,6 +20,11 @@
   name [nameNoWs nameWithWs*] = ‛«nameNoWs»«nameWithWs»’
   nameWithWs [spaces nameNoWs] = ‛‹«spaces»›«nameNoWs»’
   nameNoWs [letter cs*] = ‛«letter»«cs»’
+  nametail_newline [c] = ‛’
+  nametail_begindiv [x] = ‛’
+  nametail_enddiv [x] = ‛’
+  nametail_beginspan [x cs* gt] = ‛’
+  nametail_endspan [x] = ‛’
   nametail_alnum [c] = ‛«c»’
   nametail_other [c] = ‛‹«c»›’
 }

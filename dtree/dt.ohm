@@ -1,8 +1,6 @@
 dt {
   Main = YesNo
-  YesNo =
-    | "[" metaSymbol Arg? YesBranch NoBranch "]" -- meta
-    | "[" symbol     YesBranch NoBranch "]" -- expr
+  YesNo = | "[" "%"? symbol     Actual? "?"? YesBranch NoBranch "]" -- expr
 
   YesBranch = "|" "yes" ":" (YesNo | Process)
   NoBranch = "|" "no" ":" (YesNo | Process)
@@ -10,12 +8,10 @@ dt {
   Process = 
     | "@"? processName Actual -- withactual
     | "@"? processName -- withoutactual
-  Actual = "(" actual ")"
+  Actual =
+    | "(" actual ")" -- arg
+    | "(" ")" -- empty
 
-  Arg =  "(" actual ")"
-  metaSymbol =
-    | "%" name -- percent
-    | name "?" -- question
   symbol = name
   actual = name
   processName = name
@@ -23,6 +19,11 @@ dt {
   nameWithWs = spaces nameNoWs
   nameNoWs = letter nametail*
   nametail =
+    | "\n" -- newline
+    | "&ltdiv&gt" -- begindiv
+    | "&lt/div&gt" -- enddiv
+    | "&lt;span" (~"&gt;" any)* "&gt;" -- beginspan
+    | "&lt;/span&gt;" -- endspan
     | alnum -- alnum
     | (~space ~"[" ~"]" ~"|" ~"yes" ~"no" ~"@" ~"(" ~")" ~"%" ~"?" any) -- other
 }

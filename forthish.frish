@@ -582,6 +582,38 @@ deffunction notfound (word) {
     %eol
 }
 
+defsubr exec () {
+    ⌈ found and compiling and immediate ⌉
+    State.W ⇐ xt
+    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
+    @State.RAM[xt]  ⌈ Execute code. ⌉
+}
+
+defsubr compile_word () {
+    ⌈ found and not compiling ⌉
+    State.W ⇐ xt
+    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
+    @State.RAM[xt]  ⌈ Execute code. ⌉
+}
+
+defsubr pushAsInt (word) {
+    %push (%toint (word))
+}
+
+defsubr pushAsFloatFloat (word) {
+    %push (%tofloat (word))
+}
+
+defsubr compileInt (word) {
+    pushAsInt(word)
+    @literalize
+}
+
+defsubr compileFloat (word) {
+    pushAsFloat(word)
+    @literalize
+}
+
 defsubr xinterpret "interpret" {
     ⌈ ( string --) Execute word. ⌉
 
@@ -595,24 +627,24 @@ defsubr xinterpret "interpret" {
     	    	   						    defsynonym notFound ≡ (result = 0)
     	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
     if (found) {
-        defsynonym xt ≡ item    
-        if %inCompilationState {
-	    ⌈ found and compiling ⌉
-	    if (foundImmediate) {
-	        ⌈ found and compiling and immediate ⌉
-		State.W ⇐ xt
-		State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
-		@State.RAM[xt]  ⌈ Execute code. ⌉
-	    } else {
-	        ⌈ found and compiling and not immediate ⌉
-		%ram+(xt)
-            }
-	} else {
-	    ⌈ found and not compiling ⌉
-            State.W ⇐ xt
-	    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
-	    @State.RAM[xt]  ⌈ Execute code. ⌉
-	}
+        + defsynonym xt ≡ item    
+        + if %inCompilationState {
+	+     ⌈ found and compiling ⌉
+	+     if (foundImmediate) {
+	+         ⌈ found and compiling and immediate ⌉
+	+ 	State.W ⇐ xt
+	+ 	State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
+	+ 	@State.RAM[xt]  ⌈ Execute code. ⌉
+	+     } else {
+	+         ⌈ found and compiling and not immediate ⌉
+	+ 	%ram+(xt)
+        +     }
+ 	+ } else {
+	+     ⌈ found and not compiling ⌉
+        +     State.W ⇐ xt
+	+     State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
+	+     @State.RAM[xt]  ⌈ Execute code. ⌉
+	+ }
     } else {
         defsynonym word ≡ item
 	⌈ not found ⌉

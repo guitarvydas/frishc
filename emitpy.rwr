@@ -114,7 +114,7 @@ BuiltinPhrase_rthird [_] = ‛State.R [-3]’
 BuiltinPhrase_toboolean [_ lp exp rp] = ‛bool («exp»)’
 
 BuiltinPhrase_funcall [_ f actuals] = ‛«f»«actuals»’
-BuiltinPhrase_incompilationstate [_] = ‛State.compiling’
+BuiltinPhrase_incompilingstate [_] = ‛State.compiling’
 BuiltinPhrase_setcompilingstate [_] = ‛State.compiling = True’
 BuiltinPhrase_setnotcompilingstate [_] = ‛State.compiling = False’
 BuiltinPhrase_immediate [_] = ‛State.compiling = False’

@@ -79,7 +79,7 @@ frish {
 
      | "%funcall" Primary Actuals -- funcall
 
-     | "%inCompilationState" -- incompilationstate
+     | "%inCompilingState" -- incompilingstate
      | "%setCompilingState" -- setcompilingstate
      | "%setNotCompilingState" -- setnotcompilingstate
      | "%immediate" -- immediate
