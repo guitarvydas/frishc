@@ -1,29 +1,18 @@
 dt {
   Main = YesNo
-  YesNo = | "[" "%"? symbol     Actual? "?"? YesBranch NoBranch "]" -- expr
+  YesNo = "[" text YesBranch NoBranch "]" -- expr
 
-  YesBranch = "|" "yes" ":" (YesNo | Process)
-  NoBranch = "|" "no" ":" (YesNo | Process)
+  YesBranch = "|" "yes" ":" (YesNo | text)
+  NoBranch = "|" "no" ":" (YesNo | text)
 
-  Process = 
-    | "@"? processName Actual -- withactual
-    | "@"? processName -- withoutactual
-  Actual =
-    | "(" actual ")" -- arg
-    | "(" ")" -- empty
-
-  symbol = name
-  actual = name
-  processName = name
-  name = nameNoWs nameWithWs*
-  nameWithWs = spaces nameNoWs
-  nameNoWs = letter nametail*
-  nametail =
+  text = char+
+  
+  char =
     | "\n" -- newline
-    | "&ltdiv&gt" -- begindiv
-    | "&lt/div&gt" -- enddiv
+    | "&lt;div&gt;" -- begindiv
+    | "&lt;/div&gt;" -- enddiv
     | "&lt;span" (~"&gt;" any)* "&gt;" -- beginspan
     | "&lt;/span&gt;" -- endspan
     | alnum -- alnum
-    | (~space ~"[" ~"]" ~"|" ~"yes" ~"no" ~"@" ~"(" ~")" ~"%" ~"?" any) -- other
+    | (~space ~"[" ~"]" ~"|" ~"yes" ~"no" ~":" ~"&" ~";" any) -- other
 }
