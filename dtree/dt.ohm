@@ -1,6 +1,6 @@
 dt {
   Main = YesNo
-  YesNo = "[" text YesBranch NoBranch "]" -- expr
+  YesNo = "[" text YesBranch NoBranch "]"
 
   YesBranch = "|" "yes" ":" (YesNo | text)
   NoBranch = "|" "no" ":" (YesNo | text)
@@ -9,10 +9,10 @@ dt {
   
   char =
     | "\n" -- newline
+    | "?" -- questionmark
     | "&lt;div&gt;" -- begindiv
     | "&lt;/div&gt;" -- enddiv
     | "&lt;span" (~"&gt;" any)* "&gt;" -- beginspan
     | "&lt;/span&gt;" -- endspan
-    | alnum -- alnum
     | (~space ~"[" ~"]" ~"|" ~"yes" ~"no" ~":" ~"&" ~";" any) -- other
 }

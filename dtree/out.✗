@@ -1,6 +1,0 @@
-Error: Line 1, col 71:
-> 1 | [ found? | yes: [ %in&lt;div&gt;Compiling&lt;/div&gt;&lt;div&gt;State()?&lt;/div&gt; | yes: [ found&lt;div&gt;Immediate&lt;/div&gt;&lt;div&gt;?&lt;/div&gt; | yes: exec&lt;div&gt;(xt)&lt;/div&gt; | no: compile&lt;div&gt;word&lt;/div&gt;&lt;div&gt;(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;xt)&lt;/span&gt;&lt;/div&gt; ] | no: exec&lt;div&gt;(xt)&lt;/div&gt; ] | no: [ %in&lt;div&gt;Compiling&lt;/div&gt;&lt;div&gt;State()?&lt;/div&gt; | yes: [ %isInteger&lt;div&gt;(item)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;?&lt;/span&gt;&lt;/div&gt; | yes: compile&lt;div&gt;Int&lt;/div&gt;&lt;div&gt;(item)&lt;/div&gt; | no: [ float? | yes: compile&lt;div&gt;Float&lt;/div&gt;&lt;div&gt;(item)&lt;/div&gt; | no: %rerror() ] ] | no: [ %isInteger&lt;div&gt;(item)?&lt;/div&gt; | yes: pushAsInt&lt;div&gt;(item)&lt;/div&gt; | no: [ float? | yes: pushAsFloat&lt;div&gt;(item)&lt;/div&gt; | no: %rerror() ] ] ] ]
-                                                                            ^
-Expected a letter
-
-grammar = "dt"
