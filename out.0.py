@@ -371,7 +371,7 @@ code("0branch",0,  x0branch)
 #  immediate words that only have meaning in compile mode: xif, xelse, xthen, xsemi⎩248⎭
 #                                                      #line 249#line 250#line 251
 # IF, ELSE and THEN are "immediate" words - they should only be used inside of ":" (colon compiler) #line 252#line 253
-# see diagram `compiling-IF-THEN.drawio.png`           #line 254
+# see diagram compiling-IF-THEN.drawio.png`            #line 254
 def xif ():
     global State                                       #line 255
     State.compiling = False
@@ -735,7 +735,7 @@ def doword ():
     #   the return stack on each invocation.⎩519⎭
     #⎩520⎭
     #2. W (Word Pointer): References the CFA of the currently executing primitive.⎩521⎭
-    #   This global register serves an analogous function to 'self' in object-oriented⎩522⎭
+    #   This global register serves an analogous function to 'self in object-oriented⎩522⎭
     #   languages, enabling subroutines to access word header fields through fixed⎩523⎭
     #   offsets from the CFA.⎩524⎭
     #⎩525⎭
@@ -802,111 +802,125 @@ def notfound (word):
     print ( "?", end="")                               #line 581
     print ()                                           #line 582#line 583#line 584
 
-def xinterpret ():
+def exec (xt):
     global State                                       #line 585
-    # ( string --) Execute word.                       #line 586#line 587
-    xfind()                                            #line 588
-    # 3 possible results from xfind:⎩589⎭
-    #        1. (name 0) if not found,⎩590⎭
-    #	2. (xt 1) if found and word is immediate,⎩591⎭
-    #	3. (xt -1) if found and word is normal           #line 592
+    # found and compiling and immediate                #line 586
+    State.W =  xt                                      #line 587
+    State.IP =  -1
+    # Dummy to hold place in return stack.             #line 588
+    State.RAM [ xt]()
+    # Execute code.                                    #line 589#line 590#line 591
+
+def compile_word (xt):
+    global State                                       #line 592
+    # found and not compiling                          #line 593
+    State.W =  xt                                      #line 594
+    State.IP =  -1
+    # Dummy to hold place in return stack.             #line 595
+    State.RAM [ xt]()
+    # Execute code.                                    #line 596#line 597#line 598
+
+def pushasinteger (word):
+    global State                                       #line 599
+    State.S.push (int ( word))                         #line 600#line 601#line 602
+
+def pushasfloat (word):
+    global State                                       #line 603
+    State.S.push (float ( word))                       #line 604#line 605#line 606
+
+def compileinteger (word):
+    global State                                       #line 607
+    pushasinteger( word)                               #line 608
+    literalize()                                       #line 609#line 610#line 611
+
+def compilefloat (word):
+    global State                                       #line 612
+    pushasfloat( word)                                 #line 613
+    literalize()                                       #line 614#line 615#line 616
+
+def xinterpret ():
+    global State                                       #line 617
+    # ( string --) Execute word.                       #line 618#line 619
+    xfind()                                            #line 620
+    # 3 possible results from xfind:⎩621⎭
+    #        1. (name 0) if not found,⎩622⎭
+    #	2. (xt 1) if found and word is immediate,⎩623⎭
+    #	3. (xt -1) if found and word is normal           #line 624
 
     result = State.S.pop ()
 
-    foundImmediate = ( result ==  1)                   #line 593
+    foundImmediate = ( result ==  1)                   #line 625
 
     item = State.S.pop ()
 
-    foundNormal = ( result ==  -1)                     #line 594
+    foundNormal = ( result ==  -1)                     #line 626
 
-    notFound = ( result ==  0)                         #line 595
+    notFound = ( result ==  0)                         #line 627
 
-    found = ( foundImmediate or  foundNormal)          #line 596
-    if ( found):                                       #line 597
-
-        xt =  item                                     #line 598
-        if State.compiling:                            #line 599
-            # found and compiling                      #line 600
-            if ( foundImmediate):                      #line 601
-                # found and compiling and immediate    #line 602
-                State.W =  xt                          #line 603
-                State.IP =  -1
-                # Dummy to hold place in return stack. #line 604
-                State.RAM [ xt]()
-                # Execute code.                        #line 605
-            else:                                      #line 606
-                # found and compiling and not immediate #line 607
-
-                State.RAM.append ( xt)                 #line 608#line 609
-        else:                                          #line 610
-            # found and not compiling                  #line 611
-            State.W =  xt                              #line 612
-            State.IP =  -1
-            # Dummy to hold place in return stack.     #line 613
-            State.RAM [ xt]()
-            # Execute code.                            #line 614#line 615
-    else:                                              #line 616
-
-        word =  item                                   #line 617
-        # not found                                    #line 618
-        if State.compiling:                            #line 619
-            # not found and compiling                  #line 620
-            if (re.match(r"^-?\d*$", word)):           #line 621
-                State.S.push (int ( word))             #line 622
-                literalize()                           #line 623
-            elif (re.match(r"^-?d*\.?\d*$", word)):    #line 624
-                State.S.push (float ( word))           #line 625
-                literalize()                           #line 626
-            else:                                      #line 627
-                notfound( word)                        #line 628
-                return  False                          #line 629#line 630
-        else:                                          #line 631
-            # not found and not compiling              #line 632
-            if (re.match(r"^-?\d*$", word)):           #line 633
-                State.S.push (int ( word))             #line 634
-            elif (re.match(r"^-?d*\.?\d*$", word)):    #line 635
-                State.S.push (float ( word))           #line 636
-            else:                                      #line 637
-                notfound( word)                        #line 638
-                return  False                          #line 639#line 640#line 641#line 642
-    return  True                                       #line 643#line 644#line 645
+    found = ( foundImmediate or  foundNormal)          #line 628#line 629
+    if ( found):                                       #line 630
+        if (State.compiling):                          #line 631
+            if ( foundimmediate):                      #line 632
+                exec( item)                            #line 633
+            else:                                      #line 634
+                compileword( item)                     #line 635#line 636
+        else:                                          #line 637
+            exec( item)                                #line 638#line 639
+    else:                                              #line 640
+        if (State.compiling):                          #line 641
+            if (re.match(r"^-?\d*$",  item)):          #line 642
+                compileinteger( item)                  #line 643
+            else:                                      #line 644
+                if (re.match(r"^-?d*\.?\d*$",  item)): #line 645
+                    compilefloat( item)                #line 646
+                else:                                  #line 647
+                    return False                       #line 648#line 649#line 650
+        else:                                          #line 651
+            if (re.match(r"^-?\d*$",  item)):          #line 652
+                pushasinteger( item)                   #line 653
+            else:                                      #line 654
+                if (re.match(r"^-?d*\.?\d*$",  item)): #line 655
+                    pushasfloat( item)                 #line 656
+                else:                                  #line 657
+                    return False                       #line 658#line 659#line 660#line 661#line 662#line 663
+    return  True                                       #line 664#line 665#line 666
 code("interpret",0,  xinterpret)
 
 def ok ():
-    global State                                       #line 646
-    # ( --) Interaction loop -- REPL                   #line 647
+    global State                                       #line 667
+    # ( --) Interaction loop -- REPL                   #line 668
 
-    blank =  32                                        #line 648
-    while  True:                                       #line 649
+    blank =  32                                        #line 669
+    while  True:                                       #line 670
 
         State.BUFF = input("OK ")
         State.BUFP = 0
-                                                       #line 650
-        while not (State.BUFP >= len(State.BUFF)):     #line 651
-            xinterpret()                               #line 652#line 653#line 654#line 655#line 656
+                                                       #line 671
+        while not (State.BUFP >= len(State.BUFF)):     #line 672
+            xinterpret()                               #line 673#line 674#line 675#line 676#line 677
 
 def debugok ():
-    global State                                       #line 657
-    # ( --) Interaction loop -- REPL                   #line 658
+    global State                                       #line 678
+    # ( --) Interaction loop -- REPL                   #line 679
 
-    blank =  32                                        #line 659
+    blank =  32                                        #line 680
 
     State.BUFF = "7 ."
     State.BUFP = 0
-                                                       #line 660
-    while not (State.BUFP >= len(State.BUFF)):         #line 661
-        if ( xinterpret()):                            #line 662
-            print ( " ok", end="")                     #line 663
-            print ()                                   #line 664#line 665
+                                                       #line 681
+    while not (State.BUFP >= len(State.BUFF)):         #line 682
+        if ( xinterpret()):                            #line 683
+            print ( " ok", end="")                     #line 684
+            print ()                                   #line 685#line 686
         print ( State.BUFP, end="")
         print ( " -- ", end="")
         print ( State.BUFF, end="")
-        print ()                                       #line 666
-        xdots()                                        #line 667#line 668
+        print ()                                       #line 687
+        xdots()                                        #line 688#line 689
     print ( State.BUFP, end="")
     print ( " == ", end="")
     print ( State.BUFF, end="")
-    print ()                                           #line 669
-    xdot()                                             #line 670
-    xdots()                                            #line 671#line 672#line 673
-ok()                                                   #line 674#line 675
+    print ()                                           #line 690
+    xdot()                                             #line 691
+    xdots()                                            #line 692#line 693#line 694
+ok()                                                   #line 695#line 696
