@@ -13,5 +13,7 @@
   char_enddiv [_] = ‛’
   char_beginspan [lb cs* rb] = ‛’
   char_endspan [_] = ‛’
+  char_at [_] = ‛%funcall ’
+  char_space [_] = ‛’
   char_other [c] =‛«c»’
 }

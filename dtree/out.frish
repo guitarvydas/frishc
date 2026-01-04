@@ -1,32 +1,32 @@
 if (found) {
-    if (%inCompilingState()) {
-        if (foundImmediate) {
-            exec(xt)
+    if (%incompilingstate) {
+        if (foundimmediate) {
+            %funcall exec(item)
         } else {
-            compileword(xt)
+            %funcall compileword(item)
         }
     } else {
-        exec(xt)
+        %funcall exec(item)
     }
 } else {
-    if (%inCompilingState()) {
-        if (%isInteger(item)) {
-            compileInt(item)
+    if (%incompilingstate) {
+        if (%isinteger(item)) {
+            %funcall compileinteger(item)
         } else {
-            if (float) {
-                compileFloat(item)
+            if (%isfloat(item)) {
+                %funcall compilefloat(item)
             } else {
-                %rerror()
+                %returnFalse
             }
         }
     } else {
-        if (%isInteger(item)) {
-            pushAsInt(item)
+        if (%isinteger(item)) {
+            %funcall pushasinteger(item)
         } else {
-            if (float) {
-                pushAsFloat(item)
+            if (%isfloat(item)) {
+                %funcall pushasfloat(item)
             } else {
-                %rerror()
+                %returnFalse
             }
         }
     }

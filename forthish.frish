@@ -179,7 +179,7 @@ defsubr xquote "'" {
     defsynonym DQ ≡ 34
     %push (DQ)
     @xword
-    if %inCompilationState {
+    if %incompilingstate {
         %funcall literalize ()
     }
 }
@@ -251,7 +251,7 @@ defsubr x0branch "0branch" {
 
 ⌈ IF, ELSE and THEN are "immediate" words - they should only be used inside of ":" (colon compiler) ⌉
 
-⌈ see diagram `compiling-IF-THEN.drawio.png` ⌉
+⌈ see diagram compiling-IF-THEN.drawio.png` ⌉
 defsubr xif "if" { 
     %immediate ⌈ This instruction appears only inside subroutine sequences, ( f -- ) compile if test and branchFalse ⌉ 
     ⌈ Step. 1: generate conditional branch to yet-unknown target1 ⌉ 
@@ -519,7 +519,7 @@ The execution model maintains two critical registers:
    the return stack on each invocation.
 
 2. W (Word Pointer): References the CFA of the currently executing primitive.
-   This global register serves an analogous function to 'self' in object-oriented
+   This global register serves an analogous function to 'self in object-oriented
    languages, enabling subroutines to access word header fields through fixed
    offsets from the CFA.
 
@@ -582,35 +582,35 @@ deffunction notfound (word) {
     %eol
 }
 
-defsubr exec () {
+deffunction exec (xt) {
     ⌈ found and compiling and immediate ⌉
     State.W ⇐ xt
     State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
     @State.RAM[xt]  ⌈ Execute code. ⌉
 }
 
-defsubr compile_word () {
+deffunction compile_word (xt) {
     ⌈ found and not compiling ⌉
     State.W ⇐ xt
     State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
     @State.RAM[xt]  ⌈ Execute code. ⌉
 }
 
-defsubr pushAsInt (word) {
+deffunction pushasinteger (word) {
     %push (%toint (word))
 }
 
-defsubr pushAsFloatFloat (word) {
+deffunction pushasfloat (word) {
     %push (%tofloat (word))
 }
 
-defsubr compileInt (word) {
-    pushAsInt(word)
+deffunction compileinteger (word) {
+    %funcall pushasinteger(word)
     @literalize
 }
 
-defsubr compileFloat (word) {
-    pushAsFloat(word)
+deffunction compilefloat (word) {
+    %funcall pushasfloat(word)
     @literalize
 }
 
@@ -626,52 +626,41 @@ defsubr xinterpret "interpret" {
     deftemp item ⇐ %pop						    defsynonym foundNormal ≡ (result = -1)
     	    	   						    defsynonym notFound ≡ (result = 0)
     	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
-    if (found) {
-        + defsynonym xt ≡ item    
-        + if %inCompilationState {
-	+     ⌈ found and compiling ⌉
-	+     if (foundImmediate) {
-	+         ⌈ found and compiling and immediate ⌉
-	+ 	State.W ⇐ xt
-	+ 	State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
-	+ 	@State.RAM[xt]  ⌈ Execute code. ⌉
-	+     } else {
-	+         ⌈ found and compiling and not immediate ⌉
-	+ 	%ram+(xt)
-        +     }
- 	+ } else {
-	+     ⌈ found and not compiling ⌉
-        +     State.W ⇐ xt
-	+     State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	
-	+     @State.RAM[xt]  ⌈ Execute code. ⌉
-	+ }
+
+if (found) {
+    if (%incompilingstate) {
+        if (foundimmediate) {
+            %funcall exec(item)
+        } else {
+            %funcall compileword(item)
+        }
     } else {
-        defsynonym word ≡ item
-	⌈ not found ⌉
-	if %inCompilationState {
-	    ⌈ not found and compiling ⌉
-	    if (%isInteger (word)) {
-                %push (%toint (word))
-                @literalize
-	    } elif (%isFloat (word)) {
-                %push (%tofloat (word))
-                @literalize
-	    } else {
-	        %funcall notfound (word)
-		return False
-	    }
-	} else {
-	    ⌈ not found and not compiling ⌉
-	    if (%isInteger (word)) {
-                %push (%toint (word))
-	    } elif (%isFloat (word)) {
-                %push (%tofloat (word))
-	    } else {
-	        %funcall notfound (word)
-		return False
-	    }
-	}
+        %funcall exec(item)
     }
+} else {
+    if (%incompilingstate) {
+        if (%isinteger(item)) {
+            %funcall compileinteger(item)
+        } else {
+            if (%isfloat(item)) {
+                %funcall compilefloat(item)
+            } else {
+                %returnFalse
+            }
+        }
+    } else {
+        if (%isinteger(item)) {
+            %funcall pushasinteger(item)
+        } else {
+            if (%isfloat(item)) {
+                %funcall pushasfloat(item)
+            } else {
+                %returnFalse
+            }
+        }
+    }
+}
+
     return True
 }
 

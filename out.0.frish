@@ -179,7 +179,7 @@ defsubr xquote "'" {⎩175⎭
     defsynonym DQ ≡ 34⎩179⎭
     %push (DQ)⎩180⎭
     @xword⎩181⎭
-    if %inCompilationState {⎩182⎭
+    if %incompilingstate {⎩182⎭
         %funcall literalize ()⎩183⎭
     }⎩184⎭
 }⎩185⎭
@@ -251,7 +251,7 @@ defsubr x0branch "0branch" {⎩234⎭
 ⎩251⎭
 ⌈ IF, ELSE and THEN are "immediate" words - they should only be used inside of ":" (colon compiler) ⌉⎩252⎭
 ⎩253⎭
-⌈ see diagram `compiling-IF-THEN.drawio.png` ⌉⎩254⎭
+⌈ see diagram compiling-IF-THEN.drawio.png` ⌉⎩254⎭
 defsubr xif "if" { ⎩255⎭
     %immediate ⌈ This instruction appears only inside subroutine sequences, ( f -- ) compile if test and branchFalse ⌉ ⎩256⎭
     ⌈ Step. 1: generate conditional branch to yet-unknown target1 ⌉ ⎩257⎭
@@ -519,7 +519,7 @@ The execution model maintains two critical registers:⎩514⎭
    the return stack on each invocation.⎩519⎭
 ⎩520⎭
 2. W (Word Pointer): References the CFA of the currently executing primitive.⎩521⎭
-   This global register serves an analogous function to 'self' in object-oriented⎩522⎭
+   This global register serves an analogous function to 'self in object-oriented⎩522⎭
    languages, enabling subroutines to access word header fields through fixed⎩523⎭
    offsets from the CFA.⎩524⎭
 ⎩525⎭
@@ -582,94 +582,115 @@ deffunction notfound (word) {⎩577⎭
     %eol⎩582⎭
 }⎩583⎭
 ⎩584⎭
-defsubr xinterpret "interpret" {⎩585⎭
-    ⌈ ( string --) Execute word. ⌉⎩586⎭
-⎩587⎭
-    @xfind⎩588⎭
-    ⌈ 3 possible results from xfind:⎩589⎭
-        1. (name 0) if not found,⎩590⎭
-	2. (xt 1) if found and word is immediate,⎩591⎭
-	3. (xt -1) if found and word is normal ⌉⎩592⎭
-    deftemp result ⇐ %pop					    defsynonym foundImmediate ≡ (result = 1)⎩593⎭
-    deftemp item ⇐ %pop						    defsynonym foundNormal ≡ (result = -1)⎩594⎭
-    	    	   						    defsynonym notFound ≡ (result = 0)⎩595⎭
-    	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)⎩596⎭
-    if (found) {⎩597⎭
-        defsynonym xt ≡ item    ⎩598⎭
-        if %inCompilationState {⎩599⎭
-	    ⌈ found and compiling ⌉⎩600⎭
-	    if (foundImmediate) {⎩601⎭
-	        ⌈ found and compiling and immediate ⌉⎩602⎭
-		State.W ⇐ xt⎩603⎭
-		State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	⎩604⎭
-		@State.RAM[xt]  ⌈ Execute code. ⌉⎩605⎭
-	    } else {⎩606⎭
-	        ⌈ found and compiling and not immediate ⌉⎩607⎭
-		%ram+(xt)⎩608⎭
-            }⎩609⎭
-	} else {⎩610⎭
-	    ⌈ found and not compiling ⌉⎩611⎭
-            State.W ⇐ xt⎩612⎭
-	    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	⎩613⎭
-	    @State.RAM[xt]  ⌈ Execute code. ⌉⎩614⎭
-	}⎩615⎭
-    } else {⎩616⎭
-        defsynonym word ≡ item⎩617⎭
-	⌈ not found ⌉⎩618⎭
-	if %inCompilationState {⎩619⎭
-	    ⌈ not found and compiling ⌉⎩620⎭
-	    if (%isInteger (word)) {⎩621⎭
-                %push (%toint (word))⎩622⎭
-                @literalize⎩623⎭
-	    } elif (%isFloat (word)) {⎩624⎭
-                %push (%tofloat (word))⎩625⎭
-                @literalize⎩626⎭
-	    } else {⎩627⎭
-	        %funcall notfound (word)⎩628⎭
-		return False⎩629⎭
-	    }⎩630⎭
-	} else {⎩631⎭
-	    ⌈ not found and not compiling ⌉⎩632⎭
-	    if (%isInteger (word)) {⎩633⎭
-                %push (%toint (word))⎩634⎭
-	    } elif (%isFloat (word)) {⎩635⎭
-                %push (%tofloat (word))⎩636⎭
-	    } else {⎩637⎭
-	        %funcall notfound (word)⎩638⎭
-		return False⎩639⎭
-	    }⎩640⎭
-	}⎩641⎭
-    }⎩642⎭
-    return True⎩643⎭
-}⎩644⎭
-⎩645⎭
-deffunction ok () {⎩646⎭
-    ⌈ ( --) Interaction loop -- REPL ⌉⎩647⎭
-    defsynonym blank ≡ 32⎩648⎭
-    while ⊤ {⎩649⎭
-        %input⎩650⎭
-        while not %empty-input {⎩651⎭
-           @xinterpret⎩652⎭
-        }⎩653⎭
-    }⎩654⎭
-}⎩655⎭
-⎩656⎭
-deffunction debugok () {⎩657⎭
-    ⌈ ( --) Interaction loop -- REPL ⌉⎩658⎭
-    defsynonym blank ≡ 32⎩659⎭
-        %debuginput⎩660⎭
-        while not %empty-input {⎩661⎭
-           if (@xinterpret) {⎩662⎭
-	           %print (" ok")⎩663⎭
-		   %eol⎩664⎭
-	   }⎩665⎭
-	   %print (State.BUFP) %print (" -- ") %print (State.BUFF) %eol⎩666⎭
-	   @xdots⎩667⎭
-        }⎩668⎭
-	   %print (State.BUFP) %print (" == ") %print (State.BUFF) %eol⎩669⎭
-	   @xdot⎩670⎭
-	   @xdots⎩671⎭
-}⎩672⎭
-⎩673⎭
-@ok⎩674⎭
-    ⎩675⎭
+deffunction exec (xt) {⎩585⎭
+    ⌈ found and compiling and immediate ⌉⎩586⎭
+    State.W ⇐ xt⎩587⎭
+    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	⎩588⎭
+    @State.RAM[xt]  ⌈ Execute code. ⌉⎩589⎭
+}⎩590⎭
+⎩591⎭
+deffunction compile_word (xt) {⎩592⎭
+    ⌈ found and not compiling ⌉⎩593⎭
+    State.W ⇐ xt⎩594⎭
+    State.IP ⇐ -1  ⌈ Dummy to hold place in return stack. ⌉	⎩595⎭
+    @State.RAM[xt]  ⌈ Execute code. ⌉⎩596⎭
+}⎩597⎭
+⎩598⎭
+deffunction pushasinteger (word) {⎩599⎭
+    %push (%toint (word))⎩600⎭
+}⎩601⎭
+⎩602⎭
+deffunction pushasfloat (word) {⎩603⎭
+    %push (%tofloat (word))⎩604⎭
+}⎩605⎭
+⎩606⎭
+deffunction compileinteger (word) {⎩607⎭
+    %funcall pushasinteger(word)⎩608⎭
+    @literalize⎩609⎭
+}⎩610⎭
+⎩611⎭
+deffunction compilefloat (word) {⎩612⎭
+    %funcall pushasfloat(word)⎩613⎭
+    @literalize⎩614⎭
+}⎩615⎭
+⎩616⎭
+defsubr xinterpret "interpret" {⎩617⎭
+    ⌈ ( string --) Execute word. ⌉⎩618⎭
+⎩619⎭
+    @xfind⎩620⎭
+    ⌈ 3 possible results from xfind:⎩621⎭
+        1. (name 0) if not found,⎩622⎭
+	2. (xt 1) if found and word is immediate,⎩623⎭
+	3. (xt -1) if found and word is normal ⌉⎩624⎭
+    deftemp result ⇐ %pop					    defsynonym foundImmediate ≡ (result = 1)⎩625⎭
+    deftemp item ⇐ %pop						    defsynonym foundNormal ≡ (result = -1)⎩626⎭
+    	    	   						    defsynonym notFound ≡ (result = 0)⎩627⎭
+    	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)⎩628⎭
+⎩629⎭
+if (found) {⎩630⎭
+    if (%incompilingstate) {⎩631⎭
+        if (foundimmediate) {⎩632⎭
+            %funcall exec(item)⎩633⎭
+        } else {⎩634⎭
+            %funcall compileword(item)⎩635⎭
+        }⎩636⎭
+    } else {⎩637⎭
+        %funcall exec(item)⎩638⎭
+    }⎩639⎭
+} else {⎩640⎭
+    if (%incompilingstate) {⎩641⎭
+        if (%isinteger(item)) {⎩642⎭
+            %funcall compileinteger(item)⎩643⎭
+        } else {⎩644⎭
+            if (%isfloat(item)) {⎩645⎭
+                %funcall compilefloat(item)⎩646⎭
+            } else {⎩647⎭
+                %returnFalse⎩648⎭
+            }⎩649⎭
+        }⎩650⎭
+    } else {⎩651⎭
+        if (%isinteger(item)) {⎩652⎭
+            %funcall pushasinteger(item)⎩653⎭
+        } else {⎩654⎭
+            if (%isfloat(item)) {⎩655⎭
+                %funcall pushasfloat(item)⎩656⎭
+            } else {⎩657⎭
+                %returnFalse⎩658⎭
+            }⎩659⎭
+        }⎩660⎭
+    }⎩661⎭
+}⎩662⎭
+⎩663⎭
+    return True⎩664⎭
+}⎩665⎭
+⎩666⎭
+deffunction ok () {⎩667⎭
+    ⌈ ( --) Interaction loop -- REPL ⌉⎩668⎭
+    defsynonym blank ≡ 32⎩669⎭
+    while ⊤ {⎩670⎭
+        %input⎩671⎭
+        while not %empty-input {⎩672⎭
+           @xinterpret⎩673⎭
+        }⎩674⎭
+    }⎩675⎭
+}⎩676⎭
+⎩677⎭
+deffunction debugok () {⎩678⎭
+    ⌈ ( --) Interaction loop -- REPL ⌉⎩679⎭
+    defsynonym blank ≡ 32⎩680⎭
+        %debuginput⎩681⎭
+        while not %empty-input {⎩682⎭
+           if (@xinterpret) {⎩683⎭
+	           %print (" ok")⎩684⎭
+		   %eol⎩685⎭
+	   }⎩686⎭
+	   %print (State.BUFP) %print (" -- ") %print (State.BUFF) %eol⎩687⎭
+	   @xdots⎩688⎭
+        }⎩689⎭
+	   %print (State.BUFP) %print (" == ") %print (State.BUFF) %eol⎩690⎭
+	   @xdot⎩691⎭
+	   @xdots⎩692⎭
+}⎩693⎭
+⎩694⎭
+@ok⎩695⎭
+    ⎩696⎭

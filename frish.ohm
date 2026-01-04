@@ -62,7 +62,9 @@ frish {
      | "%toint" "(" Exp ")" -- toint
      | "%tofloat" "(" Exp ")" -- tofloat
      | "%isInteger" "(" Exp ")" -- isInteger
+     | "%isinteger" "(" Exp ")" -- isintegerLC
      | "%isFloat" "(" Exp ")" -- isFloat
+     | "%isfloat" "(" Exp ")" -- isfloatLC
      | "%input" -- input
      | "%debuginput" -- debuginput
      | "%clearS" -- clearS
@@ -79,7 +81,7 @@ frish {
 
      | "%funcall" Primary Actuals -- funcall
 
-     | "%inCompilingState" -- incompilingstate
+     | "%incompilingstate" -- incompilingstate
      | "%setCompilingState" -- setcompilingstate
      | "%setNotCompilingState" -- setnotcompilingstate
      | "%immediate" -- immediate
@@ -87,6 +89,8 @@ frish {
      | "%RAMnext" -- ramnext
      | "%ram+" "(" Exp ")" -- ramappend
      
+     | "%returnFalse" -- returnFalse
+
      | "%" #ident Args? -- unrecognized
 
    Args = "(" StuffInsideParentheses* ")"
