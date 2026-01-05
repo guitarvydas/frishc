@@ -183,6 +183,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "a8dd8cf4636d07c7",
-  "lastOpenFiles": []
+  "active": "0a3aee169d53a462",
+  "lastOpenFiles": [
+    "DOCUMENTATION seed.md",
+    "dtree/DOCUMENTATION seed.md",
+    "dtree/DOCUMENTATION.md"
+  ]
 }
