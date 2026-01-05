@@ -11,14 +11,10 @@
             "id": "0a3aee169d53a462",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dtree/DOCUMENTATION.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "DOCUMENTATION"
+              "title": "New tab"
             }
           }
         ]
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "dtree/DOCUMENTATION.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for DOCUMENTATION"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dtree/DOCUMENTATION.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from DOCUMENTATION"
+              "title": "Outgoing links"
             }
           },
           {
@@ -156,13 +150,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dtree/DOCUMENTATION.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of DOCUMENTATION"
+              "title": "Outline"
             }
           }
         ]
@@ -185,8 +178,41 @@
   },
   "active": "0a3aee169d53a462",
   "lastOpenFiles": [
-    "DOCUMENTATION seed.md",
-    "dtree/DOCUMENTATION seed.md",
-    "dtree/DOCUMENTATION.md"
+    "frishc.py",
+    "out.0.py",
+    "out.1.frish",
+    "out.0.frish",
+    "pbp/dtree/out.frish",
+    "out.1.py",
+    "forthish.frish",
+    "xinterpret.py",
+    "xinterpret.frish",
+    "pbp/#junk.bash#",
+    "pbp/junk.bash~",
+    "pbp/dtree/DOCUMENTATION.md",
+    "pbp/dtree/DOCUMENTATION seed.md",
+    "pbp/dtree/README.md",
+    "pbp/dtree/node_modules/emoji-regex/README.md",
+    "pbp/dtree/node_modules/string-width/node_modules/strip-ansi/readme.md",
+    "pbp/dtree/node_modules/string-width/node_modules/ansi-regex/readme.md",
+    "pbp/dtree/node_modules/string-width/readme.md",
+    "pbp/dtree/node_modules/string-width/readme 2.md",
+    "pbp/dtree/node_modules/yargs/README.md",
+    "pbp/dtree/node_modules/cliui/node_modules/strip-ansi/readme.md",
+    "pbp/dtree/node_modules/cliui/node_modules/ansi-regex/readme.md",
+    "pbp/dtree/node_modules/cliui/README.md",
+    "pbp/dtree/node_modules/cliui/CHANGELOG.md",
+    "pbp/dtree/node_modules/wrap-ansi/node_modules/strip-ansi/readme.md",
+    "pbp/dtree/node_modules/wrap-ansi/node_modules/ansi-regex/readme.md",
+    "pbp/dtree/node_modules/@xmldom/xmldom/readme.md",
+    "pbp/dtree/node_modules/@xmldom/xmldom/SECURITY.md",
+    "pbp/dtree/node_modules/@xmldom/xmldom/CHANGELOG.md",
+    "pbp/dtree/node_modules/yargs-parser/README.md",
+    "pbp/dtree/node_modules/yargs-parser/README 2.md",
+    "pbp/dtree/node_modules/yargs-parser/CHANGELOG.md",
+    "pbp/dtree/node_modules/yargs-parser/CHANGELOG 2.md",
+    "pbp/dtree/node_modules/y18n/README.md",
+    "pbp/dtree/node_modules/y18n/CHANGELOG.md",
+    "pbp/dtree/node_modules/wrap-ansi/readme.md"
   ]
 }

@@ -7,19 +7,21 @@ NAME=frish
 
 all: run
 
-run: generate
-	./run.sh out.1.py
+run: frishc.py
+	./run.sh frishc.py
 
-generate: forthish.frish
+frishc.py: forthish.frish
 	node ./pbp/das/das2json.mjs $(NAME).drawio
 	rm -f out.*
 	python3 main.py . 'forthish.frish' main $(NAME).drawio.json | node ./pbp/kernel/splitoutput.js
+	mv out.1.py frishc.py
 
-forthish.frish : ./dtree/out.frish forthish.frish.m4
+forthish.frish : xinterpret.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
-./dtree/out.frish : ./dtree/xinterpret.drawio
-	(cd dtree ; make)
+xinterpret.frish : xinterpret.drawio
+	./pbp/dtree.sh . ./pbp xinterpret
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom
+
