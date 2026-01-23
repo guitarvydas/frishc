@@ -20,7 +20,7 @@ forthish.frish : xinterpret.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
 xinterpret.frish : xinterpret.drawio
-	./pbp/dtree.sh . ./pbp xinterpret
+	python pbp/dtree.py . ./pbp xinterpret
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom
