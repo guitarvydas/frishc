@@ -5,17 +5,19 @@ NAME=frish
 # 2. generate python code from forthish.frish
 # 3. run the python code
 
-all: dev
-xall: run
+# frish is the name of the transmogrifier
+# forthish.frish is a version of forth written in .frish syntax
 
-run: frishc.py
-	./run.sh frishc.py
+all: run
 
-frishc.py: forthish.frish
+run: forthish.py
+	./run.sh forthish.py
+
+forthish.py: forthish.frish
 	node ./pbp/das/das2json.mjs $(NAME).drawio
 	rm -f out.*
 	python3 main.py . 'forthish.frish' main $(NAME).drawio.json | node ./pbp/kernel/splitoutput.js
-	mv out.1.py frishc.py
+	mv out.1.py forthish.py
 
 forthish.frish : xinterpret.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
@@ -31,3 +33,8 @@ dev:
 	rm -f out.*
 	rm -f pbp/dtree/out.*
 	pbp/dtree.sh . ./pbp xinterpret
+	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
+	node ./pbp/das/das2json.mjs $(NAME).drawio
+	rm -f out.*
+	python3 main.py . 'forthish.frish' main $(NAME).drawio.json | node ./pbp/kernel/splitoutput.js
+	mv out.1.py forthish.py
