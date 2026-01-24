@@ -5,7 +5,8 @@ NAME=frish
 # 2. generate python code from forthish.frish
 # 3. run the python code
 
-all: run
+all: dev
+xall: run
 
 run: frishc.py
 	./run.sh frishc.py
@@ -21,7 +22,11 @@ forthish.frish : xinterpret.frish forthish.frish.m4
 
 xinterpret.frish : xinterpret.drawio
 	python pbp/dtree.py . ./pbp xinterpret
+	# pbp/dtree.sh . ./pbp xinterpret
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom
 
+
+dev:
+	python pbp/dtree.py . ./pbp xinterpret
