@@ -3,7 +3,7 @@
     "name": "main",
     "children": [
       {
-        "name": ":$ ./t2t _00_ dtree",
+        "name": "DT to JSON",
         "id": 6
       },
       {
@@ -50,7 +50,7 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": "DT to JSON",
           "id": 6
         },
         "target": {
@@ -80,7 +80,7 @@
           "id": 18
         },
         "target": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": "DT to JSON",
           "id": 6
         }
       },
@@ -159,7 +159,7 @@
         "source_port": "✗",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": "DT to JSON",
           "id": 6
         }
       },
@@ -415,6 +415,45 @@
         "source": {
           "name": ":$ swipl tree_walk.pl",
           "id": 6
+        }
+      }
+    ],
+    "file": "dtree-transmogrifier.drawio"
+  },
+  {
+    "name": "DT to JSON",
+    "children": [
+      {
+        "name": ":$ ./t2t _00_ dtree",
+        "id": 5
+      }
+    ],
+    "connections": [
+      {
+        "dir": 0,
+        "source_port": "",
+        "target_port": "",
+        "target": {
+          "name": ":$ ./t2t _00_ dtree",
+          "id": 5
+        }
+      },
+      {
+        "dir": 2,
+        "source_port": "✗",
+        "target_port": "✗",
+        "source": {
+          "name": ":$ ./t2t _00_ dtree",
+          "id": 5
+        }
+      },
+      {
+        "dir": 2,
+        "source_port": "",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t _00_ dtree",
+          "id": 5
         }
       }
     ],
