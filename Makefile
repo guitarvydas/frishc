@@ -31,5 +31,4 @@ init:
 dev:
 	rm -f out.*
 	rm -f pbp/dtree/out.*
-	# python pbp/dtree.py . ./pbp xinterpret
 	pbp/dtree.sh . ./pbp xinterpret
