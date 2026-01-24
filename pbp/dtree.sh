@@ -14,7 +14,10 @@ node ${pbpd}/das/das2json.mjs dtree-transmogrifier.drawio
 python main.py "${pbpd}/" "$3.drawio" main  dtree-transmogrifier.drawio.json | node ${pbpd}/kernel/splitoutput.js
 if [ -f out.✗ ]
 then
+    echo 
     cat out.✗
+    echo 
+    echo 
 else
     mv out.frish ${wd}/${name}.frish
     mv out.py ${wd}/${name}.py
