@@ -2,8 +2,8 @@
 # $1 is the working directory of the project (usually '.')
 # $2 is the directory of the pbp toolset (usually './pbp')
 # $3 is the name (sans suffix) of the .drawio file input and the name of the .frish output and the .py output
-rm -f out.*
-rm -f *.json
+rm -f 'out.*'
+rm -f '*.json'
 set -e
 wd="$(realpath "$1")"
 pbpd="$(realpath "$2")"

@@ -29,4 +29,7 @@ init:
 
 
 dev:
-	python pbp/dtree.py . ./pbp xinterpret
+	rm -f out.*
+	rm -f pbp/dtree/out.*
+	# python pbp/dtree.py . ./pbp xinterpret
+	pbp/dtree.sh . ./pbp xinterpret
