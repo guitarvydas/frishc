@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+src_drawing="$(./realpath.py $1)"
+src_drawing_path="$(dirname ${src_drawing})"
+export pbp_lib="$(./realpath.py $2)"
+arg="$3"
+
+export PBP_KERNEL_PATH="${pbp_lib}/kernel"
+export PBP_DAS_PATH="${pbp_lib}/das"
+
+export PYTHONPATH="${PBP_KERNEL_PATH}:$PYTHONPATH"
+export PBP_SPLITOUTJS="${pbp_lib}/kernel/splitoutput.js"
+
+cd "${src_drawing_path}"
+node "${pbp_lib}/das/das2json.mjs" "${src_drawing}"
+./check-for-span-error.bash  ${src_drawing}.json
+python main.py "${pbp_lib}" "${arg}" main  "${src_drawing}.json" | node "${PBP_SPLITOUTJS}"
+if [ -f out.✗ ]
+then
+    cat out.✗
+    echo
+    exit 1
+fi
+

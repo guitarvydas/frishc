@@ -97,7 +97,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Indent",
@@ -136,7 +136,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Transmogrify DT",
@@ -288,7 +288,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Convert Diagram to Culled JSON",
@@ -361,6 +361,24 @@
       },
       {
         "dir": 2,
+        "source_port": "",
+        "target_port": "",
+        "source": {
+          "name": "Make Remaining ID References Human Readable",
+          "id": 17
+        }
+      },
+      {
+        "dir": 2,
+        "source_port": "✗",
+        "target_port": "✗",
+        "source": {
+          "name": "Drop drawio_id",
+          "id": 13
+        }
+      },
+      {
+        "dir": 2,
         "source_port": "✗",
         "target_port": "✗",
         "source": {
@@ -370,15 +388,24 @@
       },
       {
         "dir": 2,
-        "source_port": "",
-        "target_port": "",
+        "source_port": "✗",
+        "target_port": "✗",
         "source": {
-          "name": "Make Remaining ID References Human Readable",
-          "id": 17
+          "name": "Detect Edge Kinds",
+          "id": 9
+        }
+      },
+      {
+        "dir": 2,
+        "source_port": "✗",
+        "target_port": "✗",
+        "source": {
+          "name": "Decision Tree Diagram to JSON",
+          "id": 5
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Decision Tree Diagram to JSON",
@@ -443,7 +470,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Detect Edge Kinds",
@@ -482,7 +509,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Drop drawio_id",
@@ -521,7 +548,7 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Make Remaining ID References Human Readable",
@@ -560,6 +587,6 @@
         }
       }
     ],
-    "file": "dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
   }
 ]
