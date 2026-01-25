@@ -1,5 +1,4 @@
 import sys
-sys.path.insert(0, '../pbp/kernel')
 import kernel0d as zd
 
 try:

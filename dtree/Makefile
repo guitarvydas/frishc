@@ -4,7 +4,7 @@ all:
 	rm -f *.json
 	node $(PBP)/das/das2json.mjs dtree-transmogrifier.drawio
 	./check-for-span-error.bash  dtree-transmogrifier.drawio.json
-	./RUNPY $(PBP) main.py $(PBP) 'xinterpret.drawio' main  dtree-transmogrifier.drawio.json | node $(PBP)/kernel/splitoutput.js
+	./RUNPY ../pbp/kernel main.py $(PBP) 'xinterpret.drawio' main  dtree-transmogrifier.drawio.json | node $(PBP)/kernel/splitoutput.js
 	@if [ -f out.✗ ]; then \
 	  cat out.✗; \
 	fi
