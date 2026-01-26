@@ -18,9 +18,9 @@ generate: forthish.frish
 forthish.frish : ./dtree/out.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
-./dtree/out.frish : ./dtree/xinterpret.drawio
+./dtree/out.frish : ./xinterpret.drawio
 	rm -f out.*
-	./pbp/runpbp ./dtree/dtree-transmogrifier ./pbp ./dtree/xinterpret.drawio
+	./pbp/runpbp ./dtree/dtree-transmogrifier ./pbp ./xinterpret.drawio
 	echo
 	echo "DONE 1"
 	echo
