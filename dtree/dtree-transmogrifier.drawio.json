@@ -411,11 +411,11 @@
     "name": "Decision Tree Diagram to JSON",
     "children": [
       {
-        "name": ":$ ./t2t _00_ dtree",
+        "name": ":$ ./t2t dtree",
         "id": 5
       },
       {
-        "name": ":$ ./t2t _00_ cleanup",
+        "name": ":$ ./t2t cleanup",
         "id": 9
       }
     ],
@@ -425,7 +425,7 @@
         "source_port": "",
         "target_port": "",
         "target": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": ":$ ./t2t dtree",
           "id": 5
         }
       },
@@ -434,11 +434,11 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": ":$ ./t2t dtree",
           "id": 5
         },
         "target": {
-          "name": ":$ ./t2t _00_ cleanup",
+          "name": ":$ ./t2t cleanup",
           "id": 9
         }
       },
@@ -447,7 +447,7 @@
         "source_port": "✗",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./t2t _00_ dtree",
+          "name": ":$ ./t2t dtree",
           "id": 5
         }
       },
@@ -456,7 +456,7 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t _00_ cleanup",
+          "name": ":$ ./t2t cleanup",
           "id": 9
         }
       },
@@ -465,7 +465,7 @@
         "source_port": "✗",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./t2t _00_ cleanup",
+          "name": ":$ ./t2t cleanup",
           "id": 9
         }
       }

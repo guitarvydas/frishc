@@ -425,11 +425,11 @@
     </mxGraphModel>
   </diagram>
   <diagram id="gbfqFK9fZacDF0pz_VGW" name="Decision Tree Diagram to JSON">
-    <mxGraphModel dx="1159" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1165" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="jeyQxbimIJ7RYr7tXGBp-1" parent="1" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontFamily=Helvetica;fontSize=11;gradientColor=#E6E6E6;fontColor=default;labelBackgroundColor=none;" value=":$ ./t2t _00_ dtree" vertex="1">
+        <mxCell id="jeyQxbimIJ7RYr7tXGBp-1" parent="1" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontFamily=Helvetica;fontSize=11;gradientColor=#E6E6E6;fontColor=default;labelBackgroundColor=none;" value=":$ ./t2t dtree" vertex="1">
           <mxGeometry height="100" width="104" x="240" y="120" as="geometry">
             <mxRectangle height="26" width="99" x="-98" y="-1230" as="alternateBounds" />
           </mxGeometry>
@@ -466,7 +466,7 @@
         <mxCell id="jeyQxbimIJ7RYr7tXGBp-11" edge="1" parent="1" source="bI_KcAIFDnmqOpPIZZBC-3" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" target="jeyQxbimIJ7RYr7tXGBp-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="bI_KcAIFDnmqOpPIZZBC-1" parent="1" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontFamily=Helvetica;fontSize=11;gradientColor=#E6E6E6;fontColor=default;labelBackgroundColor=none;" value=":$ ./t2t _00_ cleanup" vertex="1">
+        <mxCell id="bI_KcAIFDnmqOpPIZZBC-1" parent="1" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontFamily=Helvetica;fontSize=11;gradientColor=#E6E6E6;fontColor=default;labelBackgroundColor=none;" value=":$ ./t2t cleanup" vertex="1">
           <mxGeometry height="100" width="104" x="446" y="120" as="geometry">
             <mxRectangle height="26" width="99" x="-98" y="-1230" as="alternateBounds" />
           </mxGeometry>
@@ -496,7 +496,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="0P-bXtsKDgwQnmN2LR0t" name="Detect Edge Kinds">
-    <mxGraphModel dx="1159" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1165" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -591,7 +591,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Make Remaining ID References Human Readable" id="93Urs1AGTztT1GDzJQnN">
-    <mxGraphModel dx="1159" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1165" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="q0jXbk2WW_Ve6-I7bZee-0" />
         <mxCell id="q0jXbk2WW_Ve6-I7bZee-1" parent="q0jXbk2WW_Ve6-I7bZee-0" />

@@ -1,7 +1,7 @@
 all:
 	rm -f out.*
 	rm -f *.json
-	./runpbp dtree-transmogrifier.drawio ../../pbp xinterpret.drawio
+	./runpbp dtree-transmogrifier.drawio ../pbp xinterpret.drawio
 
 
 install:

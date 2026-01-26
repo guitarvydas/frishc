@@ -1,20 +1,37 @@
 #!/bin/bash
 set -e
 src_drawing="$(./realpath.py $1)"
-src_drawing_path="$(dirname ${src_drawing})"
-export pbp_lib="$(./realpath.py $2)"
+export SRC_DRAWING_PATH="$(dirname ${src_drawing})"
+export PBP_LIB="$(./realpath.py $2)"
 arg="$3"
 
-export PBP_KERNEL_PATH="${pbp_lib}/kernel"
-export PBP_DAS_PATH="${pbp_lib}/das"
+export PBP_KERNEL_PATH="${PBP_LIB}/kernel"
+export PBP_DAS_PATH="${PBP_LIB}/das"
 
 export PYTHONPATH="${PBP_KERNEL_PATH}:$PYTHONPATH"
-export PBP_SPLITOUTJS="${pbp_lib}/kernel/splitoutput.js"
+export PBP_SPLITOUTJS="${PBP_LIB}/kernel/splitoutput.js"
+export PBP_T2T="${PBP_LIB}/t2t.bash"
 
-cd "${src_drawing_path}"
-node "${pbp_lib}/das/das2json.mjs" "${src_drawing}"
+echo
+echo '**** runpbp ****'
+echo src_drawing ${src_drawing}
+echo src_drawing_lib ${SRC_DRAWING_PATH}
+echo PBP_LIB ${PBP_LIB}
+echo ${PBP_KERNEL_PATH}
+echo das path ${PBP_DAS_PATH}
+echo pythonpath ${PYTHONPATH}
+echo splitoutjs ${PBP_SPLITOUTJS}
+echo t2t ${PBP_T2T}
+echo '****        ****'
+echo
+
+
+
+cd "${SRC_DRAWING_PATH}"
+node "${PBP_LIB}/das/das2json.mjs" "${src_drawing}"
 ./check-for-span-error.bash  ${src_drawing}.json
-python main.py "${pbp_lib}" "${arg}" main  "${src_drawing}.json" | node "${PBP_SPLITOUTJS}"
+python main.py "${PBP_LIB}" "${arg}" main  "${src_drawing}.json" >/tmp/xyz
+node "${PBP_SPLITOUTJS}" </tmp/xyz
 if [ -f out.✗ ]
 then
     cat out.✗
