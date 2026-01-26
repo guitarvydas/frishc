@@ -12,21 +12,6 @@ export PYTHONPATH="${PBP_KERNEL_PATH}:$PYTHONPATH"
 export PBP_SPLITOUTJS="${PBP_LIB}/kernel/splitoutput.js"
 export PBP_T2T="${PBP_LIB}/t2t.bash"
 
-echo
-echo '**** runpbp ****'
-echo src_drawing ${src_drawing}
-echo src_drawing_lib ${SRC_DRAWING_PATH}
-echo PBP_LIB ${PBP_LIB}
-echo ${PBP_KERNEL_PATH}
-echo das path ${PBP_DAS_PATH}
-echo pythonpath ${PYTHONPATH}
-echo splitoutjs ${PBP_SPLITOUTJS}
-echo t2t ${PBP_T2T}
-echo '****        ****'
-echo
-
-
-
 cd "${SRC_DRAWING_PATH}"
 node "${PBP_LIB}/das/das2json.mjs" "${src_drawing}"
 ./check-for-span-error.bash  ${src_drawing}.json
