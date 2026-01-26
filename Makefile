@@ -19,7 +19,11 @@ forthish.frish : ./dtree/out.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
 ./dtree/out.frish : ./dtree/xinterpret.drawio
-	(cd dtree ; make)
+	rm -f out.*
+	./pbp/runpbp ./dtree/dtree-transmogrifier ./pbp ./dtree/xinterpret.drawio
+	echo
+	echo "DONE 1"
+	echo
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom

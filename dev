@@ -1,0 +1,3 @@
+#!/bin/zsh
+touch ./dtree/xinterpret.drawio
+make

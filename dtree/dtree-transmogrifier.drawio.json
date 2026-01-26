@@ -417,6 +417,14 @@
       {
         "name": ":$ ./t2t cleanup",
         "id": 9
+      },
+      {
+        "name": ":$ ./dump_vars",
+        "id": 15
+      },
+      {
+        "name": ":?vars",
+        "id": 19
       }
     ],
     "connections": [
@@ -440,6 +448,32 @@
         "target": {
           "name": ":$ ./t2t cleanup",
           "id": 9
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t cleanup",
+          "id": 9
+        },
+        "target": {
+          "name": ":$ ./dump_vars",
+          "id": 15
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./dump_vars",
+          "id": 15
+        },
+        "target": {
+          "name": ":?vars",
+          "id": 19
         }
       },
       {
