@@ -14,7 +14,7 @@ export PBP_T2T="${PBP_LIB}/t2t.bash"
 
 cd "${SRC_DRAWING_PATH}"
 node "${PBP_LIB}/das/das2json.mjs" "${src_drawing}"
-./check-for-span-error.bash  ${src_drawing}.json
+${PBP_LIB}/das/check-for-span-error.bash  ${src_drawing}.json
 python main.py "${PBP_LIB}" "${arg}" main  "${src_drawing}.json" >/tmp/xyz
 node "${PBP_SPLITOUTJS}" </tmp/xyz
 if [ -f out.✗ ]
