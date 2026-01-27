@@ -627,7 +627,7 @@ defsubr xinterpret "interpret" {
     	    	   						    defsynonym notFound ≡ (result = 0)
     	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
 
-include(`./out.frish')
+include(`./xinterpret.drawio.frish')
 
     return True
 }
