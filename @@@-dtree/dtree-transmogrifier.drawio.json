@@ -97,7 +97,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Indent",
@@ -136,7 +136,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Transmogrify DT",
@@ -288,7 +288,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Convert Diagram to Culled JSON",
@@ -405,7 +405,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Decision Tree Diagram to JSON",
@@ -417,14 +417,6 @@
       {
         "name": ":$ ./t2t cleanup",
         "id": 9
-      },
-      {
-        "name": ":$ ./dump_vars",
-        "id": 15
-      },
-      {
-        "name": ":?vars",
-        "id": 19
       }
     ],
     "connections": [
@@ -451,32 +443,6 @@
         }
       },
       {
-        "dir": 1,
-        "source_port": "",
-        "target_port": "",
-        "source": {
-          "name": ":$ ./t2t cleanup",
-          "id": 9
-        },
-        "target": {
-          "name": ":$ ./dump_vars",
-          "id": 15
-        }
-      },
-      {
-        "dir": 1,
-        "source_port": "",
-        "target_port": "",
-        "source": {
-          "name": ":$ ./dump_vars",
-          "id": 15
-        },
-        "target": {
-          "name": ":?vars",
-          "id": 19
-        }
-      },
-      {
         "dir": 2,
         "source_port": "✗",
         "target_port": "✗",
@@ -504,7 +470,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Detect Edge Kinds",
@@ -543,7 +509,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Drop drawio_id",
@@ -582,7 +548,7 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   },
   {
     "name": "Make Remaining ID References Human Readable",
@@ -621,6 +587,6 @@
         }
       }
     ],
-    "file": "/Users/paultarvydas/projects/frishc/dtree/dtree-transmogrifier.drawio"
+    "file": "/Users/paultarvydas/projects/pbp-dev/dtree/dtree-transmogrifier.drawio"
   }
 ]

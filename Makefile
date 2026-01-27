@@ -20,7 +20,7 @@ forthish.frish : ./dtree/out.frish forthish.frish.m4
 
 ./dtree/out.frish : ./xinterpret.drawio
 	rm -f out.*
-	./pbp/runpbp ./dtree/dtree-transmogrifier ./pbp ./xinterpret.drawio
+	~/projects/pbp-dev/runpbp ~/projects/pbp-dev/dtree/dtree-transmogrifier ./pbp ./xinterpret.drawio
 	echo
 	echo "DONE 1"
 	echo
