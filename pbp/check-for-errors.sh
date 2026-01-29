@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+#!/bin/bash
 if grep span $1 ; then \
     echo 'draw.io sometimes inserts "span" into port names (if word wrap and/or formatted text enabled)'
     echo 'this is an error, do not continue'
@@ -8,3 +10,4 @@ else
     # echo OK
     exit 0
 fi
+
