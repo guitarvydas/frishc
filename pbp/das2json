@@ -1,0 +1,3 @@
+#!/bin/bash
+set -e
+node "${PBP_LIBD}/das-d/das2json/" "$1"

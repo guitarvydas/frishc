@@ -14,6 +14,9 @@ NAME=frish
 # python/js/etc compiler (the .frish converter doesn't do any checking, either, but, it does stick comments
 # into the generated code to make it easier to relate any problems back to the original .frish code)
 
+dontrun:
+	echo "use ./dev"
+
 all: run
 
 run: generate
@@ -29,7 +32,7 @@ forthish.frish : ./dtree/out.frish forthish.frish.m4
 
 ./dtree/out.frish : ./xinterpret.drawio
 	rm -f out.*
-	./pbp/runpbp ./pbp/dtree/dtree-transmogrifier.drawio ./pbp ./xinterpret.drawio
+	./pbp/runpbp ./pbp/dtree-d/dtree-transmogrifier.drawio ./pbp ./xinterpret.drawio
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom

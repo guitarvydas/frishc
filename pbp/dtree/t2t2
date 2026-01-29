@@ -1,2 +1,0 @@
-#!/bin/bash
-${PBP_T2T} ${PBP_APPD}/$2.ohm ${PBP_APPD}/$3.rwr ${PBP_APPD}/support.mjs -

@@ -1,4 +1,5 @@
 #!/bin/zsh
 ../pbp-dev/import-minimal.bash
 touch ./xinterpret.drawio
-make
+make run
+
