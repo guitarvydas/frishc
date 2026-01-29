@@ -30,10 +30,10 @@ export PBP_check_for_errors="${PBP_LIBD}/check-for-errors"
 export PBP_WSUPPORT="${PBP_WD}/support.mjs"
 
 # Push kernel onto PYTHONPATH
-export PYTHONPATH="${PBP_LIBD}/kernel:${PYTHONPATH}"
+export PYTHONPATH="${PBP_LIBD}/kernel-d:${PYTHONPATH}"
 
 
-for i in PBP_WD PBP_WSUPPORT PBP_LIBD PBP_APPD app_main PBP_T2TD PBP_arg 
+for i in PBP_WD PBP_WSUPPORT PBP_LIBD PBP_APPD app_main PBP_arg PBP_runpbp PBP_indent PBP_t2t PBP_das2json PBP_split_outputs PBP_check_for_errors
 do
     echo $i "=" ${!i}
 done
@@ -51,6 +51,8 @@ rm -f out.*
 "${PBP_check_for_errors}" "${app_main}.json"
 
 # Run python and pipe to split outputs
+echo runpbp "$PYTHONPATH"
+set -x
 python main.py "${PBP_LIBD}" "${PBP_arg}" main "${app_main}.json" | "${PBP_split_outputs}"
 
 # Check if the run produced "out.✗"
@@ -66,6 +68,8 @@ if [[ -f "out.✗" ]]; then
 else
     # Get basename of PBP_arg for output filenames
     arg_basename="$(basename "${PBP_arg}")"
+
+    ls -l out*
     
     # Move output files to original working directory with renamed filenames
     mv "out.frish" "${PBP_WD}/${arg_basename}.frish"
