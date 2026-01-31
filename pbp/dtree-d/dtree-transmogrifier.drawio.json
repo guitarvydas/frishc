@@ -164,11 +164,11 @@
         "id": 8
       },
       {
-        "name": ":$ ./t2t2 dt dtjs",
+        "name": ":$ ./t2t dt dtjs",
         "id": 12
       },
       {
-        "name": ":$ ./t2t2 dt dtpretty",
+        "name": ":$ ./t2t dt dtpretty",
         "id": 16
       },
       {
@@ -180,7 +180,7 @@
         "id": 24
       },
       {
-        "name": ":$ ./t2t2 dt dtpy",
+        "name": ":$ ./t2t dt dtpy",
         "id": 28
       },
       {
@@ -188,12 +188,16 @@
         "id": 32
       },
       {
-        "name": ":$ ./t2t2 dt dtfrish",
+        "name": ":$ ./t2t dt dtfrish",
         "id": 36
       },
       {
         "name": "Indent",
         "id": 40
+      },
+      {
+        "name": "🚫",
+        "id": 44
       }
     ],
     "connections": [
@@ -215,7 +219,7 @@
           "id": 8
         },
         "target": {
-          "name": ":$ ./t2t2 dt dtjs",
+          "name": ":$ ./t2t dt dtjs",
           "id": 12
         }
       },
@@ -228,7 +232,7 @@
           "id": 8
         },
         "target": {
-          "name": ":$ ./t2t2 dt dtpretty",
+          "name": ":$ ./t2t dt dtpretty",
           "id": 16
         }
       },
@@ -237,7 +241,7 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t2 dt dtjs",
+          "name": ":$ ./t2t dt dtjs",
           "id": 12
         },
         "target": {
@@ -250,7 +254,7 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t2 dt dtpretty",
+          "name": ":$ ./t2t dt dtpretty",
           "id": 16
         },
         "target": {
@@ -260,10 +264,62 @@
       },
       {
         "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t dt dtjs",
+          "id": 12
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Indent",
+          "id": 20
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Indent",
+          "id": 24
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ swipl tree_walk.pl",
+          "id": 8
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t2 dt dtfrish",
+          "name": ":$ ./t2t dt dtfrish",
           "id": 36
         },
         "target": {
@@ -280,7 +336,7 @@
           "id": 8
         },
         "target": {
-          "name": ":$ ./t2t2 dt dtpy",
+          "name": ":$ ./t2t dt dtpy",
           "id": 28
         }
       },
@@ -293,8 +349,21 @@
           "id": 8
         },
         "target": {
-          "name": ":$ ./t2t2 dt dtfrish",
+          "name": ":$ ./t2t dt dtfrish",
           "id": 36
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t dt dtfrish",
+          "id": 36
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
         }
       },
       {
@@ -302,12 +371,64 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./t2t2 dt dtpy",
+          "name": ":$ ./t2t dt dtpy",
           "id": 28
         },
         "target": {
           "name": "Indent",
           "id": 32
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Indent",
+          "id": 32
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Indent",
+          "id": 40
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t dt dtpy",
+          "id": 28
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ ./t2t dt dtpretty",
+          "id": 16
+        },
+        "target": {
+          "name": "🚫",
+          "id": 44
         }
       },
       {
@@ -330,51 +451,6 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": ":$ ./t2t2 dt dtjs",
-          "id": 12
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": ":$ ./t2t2 dt dtpretty",
-          "id": 16
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Indent",
-          "id": 20
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Indent",
-          "id": 24
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": ":$ swipl tree_walk.pl",
-          "id": 8
-        }
-      },
-      {
-        "dir": 2,
         "source_port": "",
         "target_port": "py",
         "source": {
@@ -393,38 +469,11 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./t2t2 dt dtfrish",
-          "id": 36
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Indent",
-          "id": 32
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Indent",
-          "id": 40
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": ":$ ./t2t2 dt dtpy",
-          "id": 28
+          "name": "🚫",
+          "id": 44
         }
       }
     ],

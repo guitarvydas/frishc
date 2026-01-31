@@ -1,0 +1,3 @@
+#!/bin/bash
+echo 'bbb... ' t2t in "$(pwd)"
+${PBP_t2t} $1 $2
