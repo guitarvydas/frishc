@@ -1,2 +1,0 @@
-#!/bin/bash
-"${PBP_LIBD}/t2t" "$@"
