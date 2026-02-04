@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -f out.*
+rm -f *.json
+set -e
+export SHELLOPTS
+export PBP=~/projects/pbp-dev
+export PBPHERE=$(pwd)
+export PBPCALLER=$PBPHERE
+export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
+export TOOL=~/projects/dtree
+cd ${TOOL}
+${TOOL}/RUN "xinterpret" $TOOL $CALLER
