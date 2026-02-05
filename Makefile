@@ -1,9 +1,21 @@
 NAME=frish
 
-# there are 3 steps
-# 1. manual! cd dtree ; make ; copy/paste out.frish into forthish.frish
-# 2. generate python code from forthish.frish
-# 3. run the python code
+# there are several steps
+# 1. convert the diagram 'xinterpret.drawio' to 'out.frish' ("frish" is a meta-language that looks a lot like Python)
+# 2. include the generated code into 'forthish.frish.m4' to create 'forthish.frish'
+# 3. generate python code from forthish.frish
+# 4. run the python code
+
+# the diagram 'xinterpret.drawio' is only part of the program 'forthish.frish', it only covers one function
+# within 'forthish.frish' that is easier to sketch than to manually write code for
+# the diagram is basically a skeleton of control flow that shows which functions to call under which
+# conditions
+# the diagram converter does no "type checking" - it leaves that sort of heavy lifting up to the
+# python/js/etc compiler (the .frish converter doesn't do any checking, either, but, it does stick comments
+# into the generated code to make it easier to relate any problems back to the original .frish code)
+
+dontrun:
+	echo "use ./dev"
 
 all: run
 
@@ -19,8 +31,14 @@ frishc.py: forthish.frish
 forthish.frish : xinterpret.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
+<<<<<<< HEAD
 xinterpret.frish : xinterpret.drawio
 	./pbp/dtree.sh . ./pbp xinterpret
+=======
+./dtree/out.frish : ./xinterpret.drawio
+	rm -f out.*
+	./pbp/runpbp ./pbp/dtree-d/dtree-transmogrifier.drawio ./pbp ./xinterpret.drawio
+>>>>>>> v2dtree
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom

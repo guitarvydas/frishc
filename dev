@@ -1,0 +1,6 @@
+#!/bin/zsh
+set -e
+export SHELLOPTS
+export PBP=~/projects/pbp-dev
+export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
+${PBP}/INVOKE ~/projects/dtree "$(pwd)" "xinterpret"

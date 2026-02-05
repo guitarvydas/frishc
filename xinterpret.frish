@@ -16,17 +16,17 @@ if (found) {
             if (%isfloat(item)) {
                 %funcall compilefloat(item)
             } else {
-                %returnFalse
+                %return False
             }
         }
     } else {
         if (%isinteger(item)) {
-            %funcall pushasinteger(item)
+            %funcall push as integer(item)
         } else {
             if (%isfloat(item)) {
-                %funcall pushasfloat(item)
+                %funcall push as float(item)
             } else {
-                %returnFalse
+                %return False
             }
         }
     }
