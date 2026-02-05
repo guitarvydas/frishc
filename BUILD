@@ -1,8 +1,4 @@
 #!/bin/bash
-echo >/tmp/pbplog.md
-echo >>/tmp/pbplog.md
-echo '--- in FRISH ---' >>/tmp/pbplog.md
-echo >>/tmp/pbplog.md
 rm -f out.*
 rm -f *.json
 set -e
@@ -12,15 +8,9 @@ export PBPWD="$(pwd)"
 export PBPCALLER=$PBPWD
 export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
 ###
-export tool=${HOME}/projects/dtree
+export dtree_tool=${HOME}/projects/dtree
+${PBP}/resetlog
 
-echo >>/tmp/pbplog.md
-echo '@@@@@ frishc BUILD @@@@@' >>/tmp/pbplog.md
-for i in PBP PBPWD PBPCALLER tool PYTHONPATH
-do
-    echo "$i = ${!i}" >>/tmp/pbplog.md
-done
-echo '@@@@@' >>/tmp/pbplog.md
-echo >>/tmp/pbplog.md
+# create xinterpret.frish from xinterpret.drawio
+${dtree_tool}/RUN "xinterpret" $dtree_tool $PBPCALLER
 
-${tool}/RUN "xinterpret" $tool $PBPCALLER
