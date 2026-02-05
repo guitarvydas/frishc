@@ -1,7 +1,8 @@
 #!/bin/bash
-echo
-echo '--- in FRISH ---'
-echo
+echo >/tmp/pbplog.md
+echo >>/tmp/pbplog.md
+echo '--- in FRISH ---' >>/tmp/pbplog.md
+echo >>/tmp/pbplog.md
 rm -f out.*
 rm -f *.json
 set -e
@@ -13,13 +14,13 @@ export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
 ###
 export tool=${HOME}/projects/dtree
 
-echo
-echo '@@@@@ frishc BUILD @@@@@'
+echo >>/tmp/pbplog.md
+echo '@@@@@ frishc BUILD @@@@@' >>/tmp/pbplog.md
 for i in PBP PBPWD PBPCALLER tool PYTHONPATH
 do
-    echo "$i = ${!i}"
+    echo "$i = ${!i}" >>/tmp/pbplog.md
 done
-echo '@@@@@'
-echo
+echo '@@@@@' >>/tmp/pbplog.md
+echo >>/tmp/pbplog.md
 
 ${tool}/RUN "xinterpret" $tool $PBPCALLER
