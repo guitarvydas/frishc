@@ -1,19 +1,21 @@
 #!/bin/bash
-# frish
+echo
+echo '--- in FRISH ---'
+echo
 rm -f out.*
 rm -f *.json
 set -e
 export SHELLOPTS
 export PBP="${HOME}/projects/pbp-dev"
-export PBPHERE="$(pwd)"
-export PBPCALLER=$PBPHERE
+export PBPWD="$(pwd)"
+export PBPCALLER=$PBPWD
 export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
 ###
 export tool=${HOME}/projects/dtree
 
 echo
 echo '@@@@@ frishc BUILD @@@@@'
-for i in PBP PBPHERE PBPCALLER tool PYTHONPATH
+for i in PBP PBPWD PBPCALLER tool PYTHONPATH
 do
     echo "$i = ${!i}"
 done
