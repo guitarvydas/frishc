@@ -1,0 +1,92 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram name="workflow sketch" id="atBVo0SAe0ygZZkuoX4v">
+    <mxGraphModel dx="1314" dy="718" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-35" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;dashed=1;verticalAlign=top;strokeColor=#666666;fontColor=#333333;" value=".frish to .py transmogrifier" vertex="1">
+          <mxGeometry height="720" width="1290" x="90" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;dashed=1;verticalAlign=top;strokeColor=#6c8ebf;" value=".frish to .py transmogrifier" vertex="1">
+          <mxGeometry height="280" width="480" x="640" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;dashed=1;verticalAlign=top;strokeColor=#6c8ebf;" value="dtree transmogrifier" vertex="1">
+          <mxGeometry height="190" width="340" x="400" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-5" edge="1" parent="1" source="PZ3_DPX_TZfNrsiWQ23X-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="PZ3_DPX_TZfNrsiWQ23X-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-4" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="forthish.frish" vertex="1">
+          <mxGeometry height="80" width="100" x="450" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-12" edge="1" parent="1" source="PZ3_DPX_TZfNrsiWQ23X-24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="PZ3_DPX_TZfNrsiWQ23X-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="430" as="sourcePoint" />
+            <mxPoint x="320" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-14" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" value="frish code snippet copy/pasted into forthish.frish" vertex="1">
+          <mxGeometry height="50" width="140" x="480" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-15" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" value="Forthish written in .frish" vertex="1">
+          <mxGeometry height="50" width="140" x="330" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-3" edge="1" parent="1" source="PZ3_DPX_TZfNrsiWQ23X-25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" target="PZ3_DPX_TZfNrsiWQ23X-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;fillColor=#66CC00;sketch=1;" value="dtree-transmogrifier.drawio" vertex="1">
+          <mxGeometry height="60" width="120" x="450" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;fillColor=#66CC00;sketch=1;" value="frish.drawio" vertex="1">
+          <mxGeometry height="60" width="120" x="670" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-21" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" value="dtree diagram" vertex="1">
+          <mxGeometry height="50" width="110" x="150" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-22" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="dt.ohm" vertex="1">
+          <mxGeometry height="80" width="100" x="550" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-23" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="dtfrish.rwr" vertex="1">
+          <mxGeometry height="80" width="100" x="590" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;fillColor=#66CC00;sketch=1;" value="xinterpret.drawio" vertex="1">
+          <mxGeometry height="60" width="120" x="160" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-27" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="frish.ohm" vertex="1">
+          <mxGeometry height="80" width="120" x="740" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-28" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="emitpy.rwr" vertex="1">
+          <mxGeometry height="80" width="120" x="800" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-29" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="preopt.ohm" vertex="1">
+          <mxGeometry height="55" width="70" x="850" y="295" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-30" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="preopt.rwr" vertex="1">
+          <mxGeometry height="55" width="70" x="860" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-31" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="peephole_py.ohm" vertex="1">
+          <mxGeometry height="65" width="100" x="950" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-32" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="peephole_py.rwr" vertex="1">
+          <mxGeometry height="65" width="100" x="990" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-33" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" value="out.1.py" vertex="1">
+          <mxGeometry height="80" width="100" x="1230" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="PZ3_DPX_TZfNrsiWQ23X-34" edge="1" parent="1" source="PZ3_DPX_TZfNrsiWQ23X-26" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;curved=0;" target="PZ3_DPX_TZfNrsiWQ23X-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SpOjHUIdjekeisSFCjRA-3" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" value="dtree diagram transmogrifier PBP app in its own directory" vertex="1">
+          <mxGeometry height="80" width="110" x="750" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="SpOjHUIdjekeisSFCjRA-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#FF161E;" value="" vertex="1">
+          <mxGeometry height="317.5" width="540" x="300" y="446.25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
