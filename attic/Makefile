@@ -31,14 +31,9 @@ frishc.py: forthish.frish
 forthish.frish : xinterpret.frish forthish.frish.m4
 	m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
-<<<<<<< HEAD
-xinterpret.frish : xinterpret.drawio
-	./pbp/dtree.sh . ./pbp xinterpret
-=======
 ./dtree/out.frish : ./xinterpret.drawio
 	rm -f out.*
 	./pbp/runpbp ./pbp/dtree-d/dtree-transmogrifier.drawio ./pbp ./xinterpret.drawio
->>>>>>> v2dtree
 
 init:
 	npm install yargs prompt-sync ohm-js @xmldom/xmldom
