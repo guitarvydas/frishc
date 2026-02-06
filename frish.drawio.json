@@ -13,6 +13,10 @@
       {
         "name": "Pre Optimize",
         "id": 17
+      },
+      {
+        "name": "🚫",
+        "id": 21
       }
     ],
     "connections": [
@@ -40,6 +44,19 @@
       },
       {
         "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Inhale",
+          "id": 13
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
         "source_port": "",
         "target_port": "",
         "source": {
@@ -52,39 +69,38 @@
         }
       },
       {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Pre Optimize",
+          "id": 17
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Generate Python",
+          "id": 8
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
         "dir": 2,
         "source_port": "0",
         "target_port": "0.py",
         "source": {
           "name": "Generate Python",
           "id": 8
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Inhale",
-          "id": 13
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Pre Optimize",
-          "id": 17
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "",
-        "target_port": "1.frish",
-        "source": {
-          "name": "Pre Optimize",
-          "id": 17
         }
       },
       {
@@ -107,11 +123,20 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": "Generate Python",
-          "id": 8
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 2,
+        "source_port": "",
+        "target_port": "1.frish",
+        "source": {
+          "name": "Pre Optimize",
+          "id": 17
         }
       }
     ],
@@ -125,8 +150,12 @@
         "id": 5
       },
       {
-        "name": ":$ ./pbp/t2t.bash . ./pbp internalize.ohm internalize.rwr support.mjs -",
+        "name": ":$ _/t2t internalize",
         "id": 9
+      },
+      {
+        "name": "🚫",
+        "id": 13
       }
     ],
     "connections": [
@@ -148,8 +177,34 @@
           "id": 5
         },
         "target": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp internalize.ohm internalize.rwr support.mjs -",
+          "name": ":$ _/t2t internalize",
           "id": 9
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Read Text File",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 13
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ _/t2t internalize",
+          "id": 9
+        },
+        "target": {
+          "name": "🚫",
+          "id": 13
         }
       },
       {
@@ -157,26 +212,17 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp internalize.ohm internalize.rwr support.mjs -",
+          "name": ":$ _/t2t internalize",
           "id": 9
         }
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": "Read Text File",
-          "id": 5
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp internalize.ohm internalize.rwr support.mjs -",
-          "id": 9
+          "name": "🚫",
+          "id": 13
         }
       }
     ],
@@ -200,6 +246,10 @@
       {
         "name": "Post Optimize Python",
         "id": 18
+      },
+      {
+        "name": "🚫",
+        "id": 22
       }
     ],
     "connections": [
@@ -249,6 +299,58 @@
         "target": {
           "name": "Post Optimize Python",
           "id": 18
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Legalize Python",
+          "id": 14
+        },
+        "target": {
+          "name": "🚫",
+          "id": 22
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Legalize Python",
+          "id": 10
+        },
+        "target": {
+          "name": "🚫",
+          "id": 22
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Post Optimize Python",
+          "id": 18
+        },
+        "target": {
+          "name": "🚫",
+          "id": 22
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Transpile to Python",
+          "id": 6
+        },
+        "target": {
+          "name": "🚫",
+          "id": 22
         }
       },
       {
@@ -271,38 +373,11 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": "Legalize Python",
-          "id": 14
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Legalize Python",
-          "id": 10
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Post Optimize Python",
-          "id": 18
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Transpile to Python",
-          "id": 6
+          "name": "🚫",
+          "id": 22
         }
       }
     ],
@@ -312,8 +387,12 @@
     "name": "Transpile to Python",
     "children": [
       {
-        "name": ":$ ./pbp/t2t.bash . ./pbp frish.ohm emitpy.rwr support.mjs -",
+        "name": ":$ _/t2t frish emitpy",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -322,8 +401,21 @@
         "source_port": "",
         "target_port": "",
         "target": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp frish.ohm emitpy.rwr support.mjs -",
+          "name": ":$ _/t2t frish emitpy",
           "id": 5
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ _/t2t frish emitpy",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
         }
       },
       {
@@ -331,17 +423,17 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp frish.ohm emitpy.rwr support.mjs -",
+          "name": ":$ _/t2t frish emitpy",
           "id": 5
         }
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp frish.ohm emitpy.rwr support.mjs -",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
@@ -365,6 +457,10 @@
       {
         "name": "Grep for Errors",
         "id": 17
+      },
+      {
+        "name": "🚫",
+        "id": 21
       }
     ],
     "connections": [
@@ -379,6 +475,19 @@
       },
       {
         "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Decode for Python",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
         "source_port": "",
         "target_port": "",
         "source": {
@@ -405,6 +514,45 @@
       },
       {
         "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Python Indenter",
+          "id": 9
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ python3 pyrelocate.py 55",
+          "id": 13
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": "Grep for Errors",
+          "id": 17
+        },
+        "target": {
+          "name": "🚫",
+          "id": 21
+        }
+      },
+      {
+        "dir": 1,
         "source_port": "",
         "target_port": "",
         "source": {
@@ -418,24 +566,6 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Decode for Python",
-          "id": 5
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Python Indenter",
-          "id": 9
-        }
-      },
-      {
-        "dir": 2,
         "source_port": "",
         "target_port": "",
         "source": {
@@ -445,20 +575,11 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ python3 pyrelocate.py 55",
-          "id": 13
-        }
-      },
-      {
-        "dir": 2,
-        "source_port": "✗",
-        "target_port": "✗",
-        "source": {
-          "name": "Grep for Errors",
-          "id": 17
+          "name": "🚫",
+          "id": 21
         }
       }
     ],
@@ -468,8 +589,12 @@
     "name": "Decode for Python",
     "children": [
       {
-        "name": ":$ ./pbp/t2t.bash . ./pbp pydecode.ohm pydecode.rwr support.mjs -",
+        "name": ":$ _/t2t pydecode",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -478,8 +603,21 @@
         "source_port": "",
         "target_port": "",
         "target": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp pydecode.ohm pydecode.rwr support.mjs -",
+          "name": ":$ _/t2t pydecode",
           "id": 5
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ _/t2t pydecode",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
         }
       },
       {
@@ -487,17 +625,17 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp pydecode.ohm pydecode.rwr support.mjs -",
+          "name": ":$ _/t2t pydecode",
           "id": 5
         }
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp pydecode.ohm pydecode.rwr support.mjs -",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
@@ -509,6 +647,10 @@
       {
         "name": ":$ node indenter.mjs",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -522,6 +664,19 @@
         }
       },
       {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ node indenter.mjs",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
+        }
+      },
+      {
         "dir": 2,
         "source_port": "",
         "target_port": "",
@@ -532,11 +687,11 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ node indenter.mjs",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
@@ -548,6 +703,10 @@
       {
         "name": ":$ python3 errgrep.py",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -561,6 +720,19 @@
         }
       },
       {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ python3 errgrep.py",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
+        }
+      },
+      {
         "dir": 2,
         "source_port": "",
         "target_port": "",
@@ -571,11 +743,11 @@
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ python3 errgrep.py",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
@@ -585,8 +757,12 @@
     "name": "Pre Optimize",
     "children": [
       {
-        "name": ":$ ./pbp/t2t.bash . ./pbp preopt.ohm preopt.rwr support.mjs -",
+        "name": ":$ _/t2t preopt",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -595,8 +771,21 @@
         "source_port": "",
         "target_port": "",
         "target": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp preopt.ohm preopt.rwr support.mjs -",
+          "name": ":$ _/t2t preopt",
           "id": 5
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ _/t2t preopt",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
         }
       },
       {
@@ -604,17 +793,17 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp preopt.ohm preopt.rwr support.mjs -",
+          "name": ":$ _/t2t preopt",
           "id": 5
         }
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp preopt.ohm preopt.rwr support.mjs -",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
@@ -624,8 +813,12 @@
     "name": "Post Optimize Python",
     "children": [
       {
-        "name": ":$ ./pbp/t2t.bash . ./pbp peephole_py.ohm peephole_py.rwr support.mjs -",
+        "name": ":$ _//t2t peephole_py",
         "id": 5
+      },
+      {
+        "name": "🚫",
+        "id": 9
       }
     ],
     "connections": [
@@ -634,8 +827,21 @@
         "source_port": "",
         "target_port": "",
         "target": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp peephole_py.ohm peephole_py.rwr support.mjs -",
+          "name": ":$ _//t2t peephole_py",
           "id": 5
+        }
+      },
+      {
+        "dir": 1,
+        "source_port": "✗",
+        "target_port": "",
+        "source": {
+          "name": ":$ _//t2t peephole_py",
+          "id": 5
+        },
+        "target": {
+          "name": "🚫",
+          "id": 9
         }
       },
       {
@@ -643,17 +849,17 @@
         "source_port": "",
         "target_port": "",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp peephole_py.ohm peephole_py.rwr support.mjs -",
+          "name": ":$ _//t2t peephole_py",
           "id": 5
         }
       },
       {
         "dir": 2,
-        "source_port": "✗",
+        "source_port": "",
         "target_port": "✗",
         "source": {
-          "name": ":$ ./pbp/t2t.bash . ./pbp peephole_py.ohm peephole_py.rwr support.mjs -",
-          "id": 5
+          "name": "🚫",
+          "id": 9
         }
       }
     ],
