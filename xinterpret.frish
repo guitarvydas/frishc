@@ -1,33 +1,9 @@
-if (found) {
-    if (%incompilingstate) {
-        if (foundimmediate) {
-            %funcall exec(item)
-        } else {
-            %funcall compileword(item)
-        }
-    } else {
-        %funcall exec(item)
-    }
-} else {
-    if (%incompilingstate) {
-        if (%isinteger(item)) {
-            %funcall compileinteger(item)
-        } else {
-            if (%isfloat(item)) {
-                %funcall compilefloat(item)
-            } else {
-                %return False
-            }
-        }
-    } else {
-        if (%isinteger(item)) {
-            %funcall push as integer(item)
-        } else {
-            if (%isfloat(item)) {
-                %funcall push as float(item)
-            } else {
-                %return False
-            }
-        }
-    }
-}
+if found_p ():if incompilingstate_p ():if foundimmediate_p ():exec(item) ()
+        else:compileword(item) ()]
+        else:exec(item) ()]
+        else:if incompilingstate_p ():if isinteger(item)_p ():compileinteger(item) ()
+                else:if isfloat(item)_p ():compilefloat(item) ()
+                    else:return_False ()]]
+                    else:if isinteger(item)_p ():push_as_integer(item) ()
+                        else:if isfloat(item)_p ():push_as_float(item) ()
+                            else:return_False ()]]]]
