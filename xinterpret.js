@@ -1,1 +1,40 @@
-[found_p|yes:[incompilingstate_p|yes:[foundimmediate_p|yes:exec(item)|no:compileword(item)]|no:exec(item)]|no:[incompilingstate_p|yes:[isinteger(item)_p|yes:compileinteger(item)|no:[isfloat(item)_p|yes:compilefloat(item)|no:return_False]]|no:[isinteger(item)_p|yes:push_as_integer(item)|no:[isfloat(item)_p|yes:push_as_float(item)|no:return_False]]]]
+if (found_p ()) {
+    if (incompilingstate_p ()) {
+        if (foundimmediate_p ()) {
+            return λexec(item);
+        } else {
+            return λcompileword(item);
+        }
+        
+    } else {
+        return λexec(item);
+    }
+    
+} else {
+    if (incompilingstate_p ()) {
+        if (isinteger(item)_p ()) {
+            return λcompileinteger(item);
+        } else {
+            if (isfloat(item)_p ()) {
+                return λcompilefloat(item);
+            } else {
+                return returnFalse;
+            }
+            
+        }
+        
+    } else {
+        if (isinteger(item)_p ()) {
+            return λpushasinteger(item);
+        } else {
+            if (isfloat(item)_p ()) {
+                return λpushasfloat(item);
+            } else {
+                return returnFalse;
+            }
+            
+        }
+        
+    }
+    
+}

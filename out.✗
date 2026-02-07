@@ -1,9 +1,0 @@
-Error: Line 630, col 12:
-  629 | ⎩629⎭
-> 630 | if found_p ():if incompilingstate_p ():if foundimmediate_p ():exec(item) ()⎩630⎭
-                   ^
-  631 |         else:compileword(item) ()]⎩631⎭
-Expected "{", "[", ".", "/", "^", "*", "-", "+", "<", ">", ">=", "<=", "!=", "=", "&", "in", "or", or "and"
-
-grammar = "frish
-"
