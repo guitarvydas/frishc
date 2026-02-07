@@ -79,7 +79,7 @@ frish {
 
      | "%toboolean" "(" Exp ")" -- toboolean
 
-     | "%funcall" Primary Actuals -- funcall
+     | ("λ" | "%funcall") Primary Actuals -- funcall
 
      | "%incompilingstate" -- incompilingstate
      | "%setCompilingState" -- setcompilingstate
@@ -257,6 +257,7 @@ frish {
       | "while"
       | "as"
       | "pair"
+      | "@"
       | phi
       ) ~idchar
       

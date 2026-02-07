@@ -622,9 +622,9 @@ defsubr xinterpret "interpret" {
         1. (name 0) if not found,
 	2. (xt 1) if found and word is immediate,
 	3. (xt -1) if found and word is normal ⌉
-    deftemp result ⇐ %pop					    defsynonym foundImmediate ≡ (result = 1)
-    deftemp item ⇐ %pop						    defsynonym foundNormal ≡ (result = -1)
-    	    	   						    defsynonym notFound ≡ (result = 0)
+    deftemp result ⇐ %pop					    defsynonym foundimmediate ≡ (result = 1)
+    deftemp item ⇐ %pop						    defsynonym foundnormal ≡ (result = -1)
+    	    	   						    defsynonym notfound ≡ (result = 0)
     	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
 
 include(`xinterpret.frish')

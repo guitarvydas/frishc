@@ -1,40 +1,48 @@
-[found? 
-    | yes: 
-        [%incompilingstate? 
-            | yes: 
-                [foundimmediate? 
-                    | yes: @exec(item)
-                
-                    | no: @compileword(item)
-                ]
+[ found?
+    |yes:
         
-            | no: @exec(item)
-        ]
-
-    | no: 
-        [%incompilingstate? 
-            | yes: 
-                [%isinteger(item)? 
-                    | yes: @compileinteger(item)
+        [ %incompilingstate?
+            |yes:
                 
-                    | no: 
-                        [%isfloat(item)? 
-                            | yes: @compilefloat(item)
-                        
-                            | no: %return False
-                        ]
+                [ foundimmediate?
+                    |yes:
+                        λexec(item)
+                    |no:
+                        λcompileword(item)
                 ]
-        
-            | no: 
-                [%isinteger(item)? 
-                    | yes: @push as integer(item)
-                
-                    | no: 
-                        [%isfloat(item)? 
-                            | yes: @push as float(item)
-                        
-                            | no: %return False
-                        ]
-                ]
+        |no:
+            λexec(item)
+    ]
+|no:
+    
+    [ %incompilingstate?
+        |yes:
+            
+            [ %isinteger(item)?
+                |yes:
+                    λcompileinteger(item)
+                |no:
+                    
+                    [ %isfloat(item)?
+                        |yes:
+                            λcompilefloat(item)
+                        |no:
+                            @returnFalse
+                    ]
         ]
+|no:
+    
+    [ %isinteger(item)?
+        |yes:
+            λpushasinteger(item)
+        |no:
+            
+            [ %isfloat(item)?
+                |yes:
+                    λpushasfloat(item)
+                |no:
+                    @returnFalse
+            ]
+]
+]
 ]

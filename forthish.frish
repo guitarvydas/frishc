@@ -622,43 +622,50 @@ defsubr xinterpret "interpret" {
         1. (name 0) if not found,
 	2. (xt 1) if found and word is immediate,
 	3. (xt -1) if found and word is normal ⌉
-    deftemp result ⇐ %pop					    defsynonym foundImmediate ≡ (result = 1)
-    deftemp item ⇐ %pop						    defsynonym foundNormal ≡ (result = -1)
-    	    	   						    defsynonym notFound ≡ (result = 0)
+    deftemp result ⇐ %pop					    defsynonym foundimmediate ≡ (result = 1)
+    deftemp item ⇐ %pop						    defsynonym foundnormal ≡ (result = -1)
+    	    	   						    defsynonym notfound ≡ (result = 0)
     	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
 
 if (found) {
     if (%incompilingstate) {
         if (foundimmediate) {
-            %funcall exec(item)
+            λexec(item)
         } else {
-            %funcall compileword(item)
+            λcompileword(item)
         }
+        
     } else {
-        %funcall exec(item)
+        λexec(item)
     }
+    
 } else {
     if (%incompilingstate) {
         if (%isinteger(item)) {
-            %funcall compileinteger(item)
+            λcompileinteger(item)
         } else {
             if (%isfloat(item)) {
-                %funcall compilefloat(item)
+                λcompilefloat(item)
             } else {
-                %return False
+                @returnFalse
             }
+            
         }
+        
     } else {
         if (%isinteger(item)) {
-            %funcall push as integer(item)
+            λpushasinteger(item)
         } else {
             if (%isfloat(item)) {
-                %funcall push as float(item)
+                λpushasfloat(item)
             } else {
-                %return False
+                @returnFalse
             }
+            
         }
+        
     }
+    
 }
 
     return True

@@ -25,7 +25,6 @@ elif [ "$#" -eq 3 ]; then
     echo "Frishc is not callable (yet)"
     exit 1
 else
-
     # error: usage
     echo "Usage: $0 [diagram callerWDIR]" >&2
     exit 1
@@ -45,4 +44,11 @@ ${PBP}/das2json frish.drawio
 
 # produce frishc.py by running the frish transmogrifier
 python3 main.py 'forthish.frish' main frish.drawio.json | ${PBP}/splitoutputs
-mv out.1.py frishc.py
+if [ -f out.✗ ]
+then
+    echo
+    echo ">> ERROR <<"
+    cat out.✗
+else
+    mv out.1.py frishc.py
+fi
