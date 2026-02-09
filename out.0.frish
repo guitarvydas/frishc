@@ -625,7 +625,7 @@ defsubr xinterpret "interpret" {⎩617⎭
     deftemp result ⇐ %pop					    defsynonym foundimmediate ≡ (result = 1)⎩625⎭
     deftemp item ⇐ %pop						    defsynonym foundnormal ≡ (result = -1)⎩626⎭
     	    	   						    defsynonym notfound ≡ (result = 0)⎩627⎭
-    	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)⎩628⎭
+    	    	   						    defsynonym found ≡ (foundimmediate or foundnormal)⎩628⎭
 ⎩629⎭
 if (found) {⎩630⎭
     if (%incompilingstate) {⎩631⎭
