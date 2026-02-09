@@ -4,35 +4,6 @@
 PBP is "Parts Based Programming".  
   
 A Part is like a command line app in UNIX, but with fewer restrictions.  
-###   
-### Two Kinds of Parts  
-* Leaf Part  
-* Container Part  
-### UNIX Command Line Restrictions  
-### Port Restrictions  
-- a UNIX command has one input port, called *stdin* and implemented internally as a file descriptor (FD)  
-- a UNIX command has one output port, called *stdout* (an FD)  
-- a UNIX command has one error output port, called *stderr* (and FD)  
-  
-### ### Routing Restrictions of UNIX Shells  
-* UNIX commands can only be arranged in a left-to-right pipeline  
-* feedback is not allowed  
-* underlying FD structures make it possible to create feedback, but shell syntax does not encourage this  
-### ### Fan-Out Restrictions  
-* fan-out is not encouraged  
-* once data coming in from a pipe has been consumed, other Parts cannot see the same data (or a copy of the data)  
-* programmers must use the ‘tee’ command to create fan-out  
-    * this is too cumbersome and breaks programmers’ “flow”  
-    * the system should allow for this as a first-class operation, not as a second-class operation like that of inserting “tee”  
-* “fan-out” means sending that the same data can be sent from one sender to multiple receivers  
-* sending data from one sender to one receiver is “atomic” by virtue of the fact that fan-out is not allowed  
-    * a more full implementation of fan-out must require that all receivers receive the data “at the same time”, without data from other senders being interleaved in time, for example if part A sends X to B and to C, while part Q sends Y to B and C, both B and C must see X before Y, or Y before X - the parts B and C cannot see different orderings of X and Y, e.g. B sees X,Y while C sees, Y,X (disallowed)  
-        * this ordering guarantee makes it possible to reason about “time” and “ordering”, functional programming makes this impossible by ignoring “time” (it *is* possible to handle this kind of thing with functional programming, but, it is inconvenient and breaks programmers’ *flow *hence is not considered an easy choice hence is not affects the way that one thinks about solutions).  
-###   
-### ### Multi-Language  
-### ### Layering  
-  
-This is but a model of programming. There are other models, but the above restrictions and UNIX's ubiquitousness discourage the use of other models  
   
 ## The PBP Model  
 ### Multiple-Language  
