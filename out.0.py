@@ -857,7 +857,7 @@ def xinterpret ():
 
     notfound = ( result ==  0)                         #line 627
 
-    found = ( foundImmediate or  foundNormal)          #line 628#line 629
+    found = ( foundimmediate or  foundnormal)          #line 628#line 629
     if ( found):                                       #line 630
         if (State.compiling):                          #line 631
             if ( foundimmediate):                      #line 632

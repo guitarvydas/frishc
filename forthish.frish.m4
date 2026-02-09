@@ -625,7 +625,7 @@ defsubr xinterpret "interpret" {
     deftemp result ⇐ %pop					    defsynonym foundimmediate ≡ (result = 1)
     deftemp item ⇐ %pop						    defsynonym foundnormal ≡ (result = -1)
     	    	   						    defsynonym notfound ≡ (result = 0)
-    	    	   						    defsynonym found ≡ (foundImmediate or foundNormal)
+    	    	   						    defsynonym found ≡ (foundimmediate or foundnormal)
 
 include(`xinterpret.frish')
 

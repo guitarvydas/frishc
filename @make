@@ -1,54 +1,115 @@
-#!/bin/bash
+#!/usr/bin/env python3
+"""pbp-pong - Cross-platform build script"""
 
-### frishc ###
+import os
+import sys
+import subprocess
+import shutil
+from pathlib import Path
 
-set -e
-export SHELLOPTS
 
-# set up env vars depending on whether this script was called from elsewhere or is the top level
-if [ "$#" -eq 0 ]; then
-    # no arguments - top level build
-    # current working directory (of dtree)
-    export PBP="${HOME}/projects/pbp-dev"
-    export PBPWD="$(pwd)"
-    export PBPCALLER=$PBPWD
-    export PYTHONPATH="${PBP}/kernel:${PYTHONPATH}"
-    ###
-    dtree_tool=${HOME}/projects/dtree
-    ${PBP}/resetlog
-elif [ "$#" -eq 3 ]; then
-    # exactly three arguments
-    # $1 is callee's working dir (i.e. dtree)
-    # $2 is name of decision tree .drawio file, 
-    # $3 is caller's working dir
-    # push a new value of PBPWD onto the stack, which will get unwound to its previous value when this script ends
-    echo "Frishc is not callable (yet)"
-    exit 1
-else
-    # error: usage
-    echo "Usage: $0 [diagram callerWDIR]" >&2
-    exit 1
-fi
+def run_command(cmd, shell=False):
+    """Run a command and raise exception on failure"""
+    if isinstance(cmd, str) and not shell:
+        cmd = cmd.split()
+    result = subprocess.run(cmd, shell=shell, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(f"Command failed: {cmd}\nStderr: {result.stderr}")
+    return result
 
-rm -f out.*
-rm -f *.json
 
-# create xinterpret.frish from xinterpret.drawio
-${dtree_tool}/@make ${dtree_tool} "xinterpret" $PBPCALLER
+def main():
+    # Set up environment variables based on arguments
+    if len(sys.argv) == 1:
+        # No arguments - top level build
+        pbp = Path.home() / "projects" / "pbp-dev"
+        pbpwd = Path.cwd()
+        pbpcaller = pbpwd
+        
+        os.environ["PBP"] = str(pbp)
+        os.environ["PBPWD"] = str(pbpwd)
+        os.environ["PBPCALLER"] = str(pbpcaller)
+        
+        # Add to PYTHONPATH
+        kernel_path = pbp / "kernel"
+        current_pythonpath = os.environ.get("PYTHONPATH", "")
+        os.environ["PYTHONPATH"] = f"{kernel_path}{os.pathsep}{current_pythonpath}"
+        
+        dtree_tool = Path.home() / "projects" / "dtree"
+        
+        # Run resetlog
+        run_command([str(pbp / "resetlog")])
+        
+    elif len(sys.argv) == 4:
+        # Three arguments - called from elsewhere
+        print("Frishc is not callable (yet)")
+        sys.exit(1)
+    else:
+        # Error: usage
+        print(f"Usage: {sys.argv[0]} [diagram callerWDIR]", file=sys.stderr)
+        sys.exit(1)
+    
+    # Clean up old outputs
+    for pattern in ["out.*", "*.json"]:
+        for file in Path.cwd().glob(pattern):
+            file.unlink()
+    
+    # Create xinterpret.frish from xinterpret.drawio
+    pbp_path = Path(os.environ["PBP"])
+    pbpcaller = Path(os.environ["PBPCALLER"])
+    
+    make_script = dtree_tool / "@make"
+    run_command([str(make_script), str(dtree_tool), "xinterpret", str(pbpcaller)])
+    
+    # Create forthish.frish by including the generated code from xinterpret.drawio
+    # Using m4 with tr to remove carriage returns
+    m4_result = subprocess.run(
+        ["m4", "forthish.frish.m4"],
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    
+    # Remove \r characters (cross-platform line ending handling)
+    clean_output = m4_result.stdout.replace('\r', '')
+    
+    with open("forthish.frish", "w", newline='\n') as f:
+        f.write(clean_output)
+    
+    # Convert the diagram frish.drawio to frish.drawio.json
+    run_command([str(pbp_path / "das2json"), "frish.drawio"])
+    
+    # Produce frishc.py by running the frish transmogrifier
+    python_cmd = [
+        sys.executable,  # Use same Python interpreter
+        "main.py",
+        "forthish.frish",
+        "main",
+        "frish.drawio.json"
+    ]
+    
+    result = subprocess.run(python_cmd, capture_output=True, text=True, check=True)
+    
+    # Split outputs
+    splitoutputs = pbp_path / "splitoutputs"
+    split_result = subprocess.run(
+        [str(splitoutputs)],
+        input=result.stdout,
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    
+    # Check for errors
+    error_file = Path("out.✗")
+    if error_file.exists():
+        print("\n>> ERROR <<")
+        print(error_file.read_text())
+    else:
+        output_file = Path("out.1.py")
+        if output_file.exists():
+            shutil.move(str(output_file), "frishc.py")
 
-# create forthish.frish by including the generated code from xinterpret.drawio
-m4 forthish.frish.m4 | tr -d '\r' > forthish.frish
 
-# convert the diagram frish.drawio to frish.drawio.json
-${PBP}/das2json frish.drawio
-
-# produce frishc.py by running the frish transmogrifier
-python3 main.py 'forthish.frish' main frish.drawio.json | ${PBP}/splitoutputs
-if [ -f out.✗ ]
-then
-    echo
-    echo ">> ERROR <<"
-    cat out.✗
-else
-    mv out.1.py frishc.py
-fi
+if __name__ == "__main__":
+    main()
